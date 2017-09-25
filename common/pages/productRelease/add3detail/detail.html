@@ -1,0 +1,155 @@
+<div class="container-fixed">
+<div class="row authlistTop_top"><div class=" gobackbtn" data-bind="click:goback"><i class="cl cl-arrow-retract"></i></div>商品规格详情</div>
+
+
+<div class="con_right appdetail app3detail">
+    <div class="main_conc re_con ">
+        <div class="product_add_gg">
+
+            <!-- <div class="product3_com_m clear">
+                <span class="m_left">订购方式 </span>
+                <select  data-bind="value: data().saleMode" style="border:0; background: none" disabled>
+                    <option value="1">周期式</option>
+                    <option value="2">按次出售</option>
+                    <option value="3">面议</option>
+                </select>
+
+
+            </div>
+           <div class="product3_com_m2 clear" style="    margin: 5px 0 0 2%;">
+                <span><input class="product3_com_m2_input" disabled type="checkbox"><em class="check_Em">允许多账户购买</em></span>
+                <p>提交审核后，不可更改</p>
+            </div>
+            <div class="product3_com_m product3_com_m3">
+                <span class="m_left">产品版本 </span>
+                <div class="product3_com_m3list">
+                    <p class="active">此产品支持定制化，请联系服务商洽谈后确定相应方案和报价<i class="cl cl-selected-t"></i></p>
+                    <p>此产品为高端集团版，请联系服务商洽谈后获取详细方案和报价<i class="cl cl-selected-t"></i></p>
+                </div>
+                <p>提交审核后，不可更改</p>
+            </div>-->
+            <div class="clear app3detail_List app3detail_saleMode3">
+                <div class="product_add_row product_add_specification  " >
+                    <div class="product3_com_t " >
+                        <span><input class="prductName_input" type="text" value="面议" ></span>
+                    </div>
+                    <div class="product3_com_b_b " style="height:200px">
+                            
+                            <ul>
+                                <li class="productVersion1">
+                                    <span >此商品支持定制化，请联系服务商洽谈后确定相应方案和报价</span>
+                                </li>
+                                <li class="productVersion2">
+                                    <span >此商品为高端集团版，请联系服务商洽谈后获取详细方案和报价</span>
+                                </li>
+                            </ul>
+                    </div>
+                </div>
+            </div>
+            <div data-bind="foreach: data1.content" class="clear app3detail_List">
+                <div class="product_add_row product_add_specification  " >
+                    
+                    <div class="product3_com_t" >
+                        <span><input class="prductName_input" type="text"  data-bind="value:specificationName"></span>
+
+
+                    </div>
+                    <div class="product3_com_t2">
+                        <span class="code_tit">规格编码 <i class="cl cl-tips-c-o"></i></span>
+                        <span class="code_text">此编码用于接口开发。用友云市场开通服务时，会发送此编码到您的系统用于识别商品规格。请将此编码告知系统开发人员。</span>
+                        <span class="code_code" data-bind="text:skuId"></span>
+                    </div>
+                    <div class="product3_com_b product3_com_b_normal" >
+                        <!-- <div class="product3_com_b_d">产品定价 <input class="product3_com_price"  type="text" data-bind="value:price"  maxlength="100" placeholder="售价"> 元/月
+                         </div>-->
+                        <div  class="product3_com_b_t" style="display: block;height: auto;" data-bind="visible:saleMode!=3">
+                            <div class="product3_com_b_t_t">账号数量</div>
+                            <div data-bind="visible:multiAccount==1" style="margin-left: 3.5%;float: left;width: 70%;">
+                                <span data-bind="text:minAccount" ></span>
+                                <span>~</span>
+                                <span data-bind="text:maxAccount"></span>
+                            </div>
+                             <div data-bind="visible:multiAccount==1 && autoNegotiable==1" class="fwmy_li" style="height: auto;position:relative">
+                                    <span class="li_1"><input disabled  class="product3_com_b_b_check"  type="checkbox"></span>
+                                    <span class="li_2" style="width: auto">不在此数量范围显示价格面议</span>
+                                    <i class="cl cl-tips-c-o" style="margin-left: 5px"></i>
+                                    <div class="fwmy" style="display:none; line-height:25px">用户输入数量在上述范围时自动计算价格，不在上述范围时显示价格面议</div>
+                            </div>
+                            <div data-bind="visible:multiAccount==0" style="margin-left:3.5%;float: left;width: 70%;">
+                                <span>不支持多账户购买</span>
+                            </div>
+
+                        </div>
+
+                        <div class="product3_com_b_b">
+                            <span class="tit">租期定价</span>
+                           
+                            <ul data-bind="visible:saleMode==2">
+                                <li>
+                                    <span data-bind="text:price"></span>
+                                </li>
+                            </ul>
+                            <ul data-bind="visible:saleMode==1">
+                                <li data-bind="visible:price1Month!=null">
+                                    <span>1个月</span>
+                                    <span style="width:48%"><em data-bind="text:price1Month" ></em> 元</span>
+                                </li>
+                                <li data-bind="visible:price3Month!=null">
+                                    <span>3个月</span>
+                                    <span style="width:48%" ><em data-bind="text:price3Month" ></em> 元</span>
+                                </li>
+                                <li data-bind="visible:price6Month!=null">
+                                    <span>6个月</span>
+                                    <span style="width:48%" ><em data-bind="text:price6Month" ></em> 元</span>
+                                </li>
+
+                                <li data-bind="visible:price1Year!=null">
+                                    <span>1年</span>
+                                    <span style="width:48%"  ><em data-bind="text:price1Year" ></em> 元</span>
+                                </li>
+                                <li data-bind="visible:price2Year!=null">
+                                    <span>2年</span>
+                                    <span style="width:48%"  ><em data-bind="text:price2Year" ></em> 元</span>
+                                </li>
+                                <li data-bind="visible:price3Year!=null">
+                                    <span>3年</span>
+                                    <span style="width:48%" ><em data-bind="text:price3Year" ></em> 元</span>
+                                </li>
+
+                                <!--<li><input type="checkbox" value="36" data-bind="checked:$parent.leaseCheckout(lease,36)"> 3年 </li>-->
+                            </ul>
+                        </div>
+
+                    </div>
+                    <div class="product3_com_b product3_com_b_API" style="display: none">
+
+
+                        <div class="product3_com_b_b">
+                            <span class="tit">规格定价</span>
+                            <ul data-bind="visible:saleMode==2" style="height: auto">
+                                <li>
+                                    <span data-bind="text:price"></span>&nbsp;元
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="product3_com_b_b" style="height:200px">
+                            <span class="tit">规格配额</span>
+                            <ul data-bind="visible:saleMode==2" style="height: auto">
+                                <li>
+                                    <span data-bind="text:count"></span>&nbsp;次
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+
+
+
+    </div>
+</div>
+</div>

@@ -1,0 +1,67 @@
+<div class="container-fixed">
+    <div class="row authlistTop_top">商品上架</div>
+    <div class="productRelease_tpic"><img src="/market/common/images/release/t1.jpg" /> </div>
+
+    <div class="con_right appdetail">
+        <div class="app_t1_list">
+            <ul data-bind="foreach: data">
+                <li data-bind="visible:status==1,text:categoryName,attr:{'data-id':categoryId}" ></li>
+                <li class="dis" data-bind="visible:status==0,text:categoryName,attr:{'data-id':categoryId}" ></li>
+                <!--<li>专有云应用软件</li>
+                <li>云平台</li>
+                <li>云解决方案</li>
+                <li>数据服务</li>
+                <li>安全服务</li>
+                <li>运营服务</li>-->
+            </ul>
+        </div>
+        <div class="app_com_list">
+            <ul>
+                <li>
+                    <span class="app_com_list_left"><i class="must">*</i>商品名称</span>
+                    <input  type="text"  class="tenant_name productName_In" data-bind="value: codedata().productName, valueUpdate: 'change'" placeholder="不能超过32个字符" maxlength="32">
+                </li>
+
+                <li>
+                    <span class="app_com_list_left"><i class="must">*</i>开通方式</span>
+                    <select class="select_this" data-bind="value: codedata().openMode" >
+                        <option value="3">人工服务</option>
+
+                        <option value="1">自动开通</option>
+                        <!-- <option value="2">手动开通</option>-->
+                       <!-- <option value="4">激活码授权</option>-->
+
+                    </select>
+                    <i class="select_bars cl cl-menu"></i>
+                </li>
+                <li class="APIdata_li">
+                    <span class="app_com_list_left">API商品</span>
+                    <select id="APIdata" data-bind="options:APIdata,optionsText: 'name', optionsValue:'pk',value:codedata().apilinkPK" >
+
+                    </select>
+                    <i class="select_bars cl cl-menu"></i>
+                </li>
+
+                <li class="app_com_list_bo_2">
+                    <span class="app_com_list_left"><i class="must">*</i>生产系统接口地址</span>
+                    <input  type="text"  class="tenant_name " data-bind="value: codedata().interfaceAddress" placeholder="http://" maxlength="100">
+                    <em class="blue" style="margin-left: 10px;line-height: 31px;">查看接口开发文档及下载示例代码</em>
+                    <p><i class="blue">请立即进行接口测试</i>，确保生产系统接口可用。</p>
+                    <p>生产地址检测规则：<br/>
+                        1、必须是http或https开头；<br/>
+                        2、url必须是域名，不能是ip地址；<br/>
+                        3、通过head方式访问url，返回的http status code必须大于等于200，且小于等于500，2秒内必须返回。
+                    </p>
+
+                </li>
+                <li style="margin-top: 1.5%">
+                    <span class="app_com_list_left">需要用户授权</span>
+                    <span class="fl"><input  type="checkbox"  class="checkbox_name" ><em class="check_Em">手机</em></span>
+                    <span class="fl marleft10"><input  type="checkbox"  class="checkbox_name" ><em class="check_Em">邮箱</em></span>
+                </li>
+
+            </ul>
+        </div>
+        <div class="next_newbtn " data-bind="click:submitMo" ><span>下一步<i class="cl cl-arrow-right"></i></span></div>
+    </div>
+</div>

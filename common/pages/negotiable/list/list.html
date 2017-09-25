@@ -1,0 +1,58 @@
+<div class="container-fixed">
+    <div class="row authlistTop_top">面议申请列表</div>
+    <div class="row authlistTop" style="margin-top: 45px">
+
+        <div class="orderlist_nav col-xs-4 col-md-4">
+            <span class="active" data-bind="click:allorderpay">全部</span>
+            <span data-bind="click:orderpay">已处理</span>
+            <span data-bind="click:ordernopay">未处理</span>
+        </div>
+        <div class="right_export" data-bind="click:Dexport">批量导出</div>
+        <!-- <div class="ec-search  order_right_search" >
+            <div style="text-align: right;">
+                <div class="form-search" >
+                    <input type="text" name="search_LIKE_name" class="input_search input-medium" data-bind="value:searchText" placeholder=""/>&nbsp;&nbsp;
+
+                    <div class="search_btn" id="search_btn" ><i class="fa fa-search" data-bind="click:searchGo"></i></div>
+                </div>
+
+            </div>
+        </div> -->
+    </div>
+
+    <!-- 列表区域  -->
+
+    <div class="table-responsive authlistTable ">
+        <table class="table table-bordered table-condensed table-hover usertable">
+            <thead>
+            <tr class="authlist_tbtit" style="background: #f0f0f0;">
+                <th width="25%" align="center">目标商品</th>
+                <th width="10%" align="center">姓名</th>
+                <th width="20%" align="center">联系电话</th>
+                <!-- <th width="10%" align="center">邮箱</th> -->
+                <th width="25%" align="center">公司名称</th>
+                <th width="10%" align="center">时间</th>
+                <th width="10%" align="center">处理状态</th>
+
+            </tr>
+            </thead>
+            <tbody data-bind="foreach: data.content"  class="authlist_tb">
+            <tr data-bind="attr:{'data-id':id},click:function(){$parent.godetail(id)}">
+                <td data-bind="text:productName"></td>
+                <td data-bind="text:customerName"></td>
+                <td data-bind="text:telephone"></td>
+                <!-- <td data-bind="text:specificationsName"></td> -->
+                <td data-bind="text:companyName"></td>
+                <td data-bind="text:time"></td>
+                <!-- <td data-bind="text:count"></td> -->
+				<td data-bind="visible:status=='1'">已处理</td>
+                <td style="color: #0088cc;cursor: pointer"  data-bind="visible:status=='0'">未处理</td>
+            </tr>
+            </tbody>
+        </table>
+        <div style="text-align: right;float:right;clear:both;margin-right:40px;" id='pagination' class='u-pagination'></div>
+        <div class="clear"></div>
+    </div>
+</div>
+</div>
+

@@ -1,0 +1,68 @@
+ <div class="container-fixed ">
+     <div class="row authlistTop_top"><div class="backBtn" data-bind="click:goback" style="top:10px;"><i class="cl cl-arrow-left"></i>返回列表</div>面议申请详情</div>
+     
+     <!--<div class="order_Status" data-bind="visible:data().orderStatus==2">订单状态:<span class="red_730"> 未支付 </span>请于<span>2017-02-21 10:10：10 </span>前支付完成，若未及时付款，系统将自动取消订单。</div>-->
+    <div class="Basics_info order-detail-wrap">
+        <div class="order-detail-items-title">申请信息</div>
+        <ul class="order-detail-items" >
+            <li><span class="order-detail-items-text">申请时间：</span><span data-bind="text:data().time"></span></li>
+            <!-- <li><span>服务商信息：</span><span data-bind="text:data().isvName"></span></li> -->
+            <li><span class="order-detail-items-text">目标商品：</span><span data-bind="text:data().productName"></span></li>
+
+        </ul>
+        <div class="order-detail-items-title">客户信息</div>
+        <div class="order-detail-mes">
+            <table class="detail_table">
+                <tr>
+                    <th>姓名</th>
+                    <th>联系电话</th>
+                    <th >邮箱</th>
+                    <th >公司名称</th>
+                    <!-- <th>职务</th> -->
+                    <th>时间</th>
+                    <th width="30%">留言</th>
+                    <!--<th width="25%"></th>-->
+                </tr>
+                <tr>
+                    <td data-bind = "text:data().customerName"></td>
+                    <td data-bind = "text:data().telephone"></td>
+                    <td data-bind = "text:data().email"></td>
+                    <td data-bind = "text:data().companyName"></td>
+                    <td data-bind = "text:data().time"></td>
+                    <td data-bind = "text:data().job"></td>
+                    <!-- <td data-bind = "text:data().specificationsName"></td> -->
+
+                </tr>
+            </table>
+
+        </div>
+        <div class="order-detail-items-title" >处理信息</div>
+
+            <ul class="order-detail-items" >
+                <li data-bind="visible:data().status == 1"><span class="order-detail-items-text">处理状态：</span><span>已处理</span></li>
+                <li data-bind="visible:data().status == 0"><span class="order-detail-items-text">处理状态：</span><span>未处理</span></li>
+                <!-- <li><span>服务商信息：</span><span data-bind="text:data().isvName"></span></li> -->
+                <li class="clear" style="width:80%">
+                    <span class="order-detail-items-text">备注：</span>
+                    <textarea style="border: 1px solid #ccc; width: 500px; height: 66px; resize: none;" data-bind="visible:data().status == 0" class="remarks_ct" maxlength="100" placeholder="最多可输入100个字"></textarea>
+                    <p data-bind="visible:data().status == 1" class="remark_word"><span data-bind="text:data().note"></span></p>
+                    <div data-bind="visible:data().status == 0"><span class="btn_blue remarks" data-bind="click:function(){toRemarks(),alertBosShow()}">提交</span></div>
+                    <!-- <span class="visible:data().billStatusIndex==2">提交</span> -->
+                </li>
+
+            </ul>
+    	</div>
+</div>
+<!--公共弹窗部分  -->
+<div class="section-alert-box">
+    <div class="section-alert-bg"></div>
+    <div class="section-alert-con">
+        <div class="section-alert-title"></div>
+        <div class="section-alert-items"> 
+        </div>
+        <div class="section-alert-operation">
+           <!--  <span class="btn_blue alert-confirm-btn">提交</span> -->
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,69 @@
+<div class="container-fixed">
+    <div class="row authlistTop_top">商品上架</div>
+    <div class="productRelease_tpic"><img src="/market/common/images/release/t5.jpg" /> </div>
+
+    <div class="con_right appdetail">
+        <div class="main_conc re_con useradd">
+
+            <div class="mic userAddtext product_add_com product4_add_com">
+
+            <div class="product_add_row">
+                <!--<div class="tel rowm">
+                    <span class="m_left"><i class="must">*</i>服务时间</span>
+                    <div class="userAddInput">&lt;!&ndash;<i class="must">*</i>&ndash;&gt;<input  type="text"  class="tenant_name serviceTime" data-bind="value: data().serviceTime" placeholder="9:00 - 17:00" maxlength="100"></div>
+                </div>
+-->
+               <div class="tel rowm">
+                   <span class="m_left"><i class="must">*</i>售后范围</span>
+                   <div class="userAddInput productR_myEditor serviceScopeEditor" ></div>
+                   <div class="proadd_tips">示例：产品支持的服务时间（9:00-18:00）、服务范围（全国）、业务范围（使用指导）</div>
+               </div>
+                <div class="tel rowm">
+                    <span class="m_left">使用指南</span>
+                    <div class="userAddInput">
+                        <div class="proRe_pdf_logo">
+                            <div class="proRe_pdf_logo_left"><img src="/market/common/images/pdflogo.png"/></div>
+                            <div class="proRe_pdf_logo_right">
+                                <p class="proRe_pdf_logo_right_p1">使用指南</p>
+                                <p data-bind="click:remove_PDF" class="cursor">移除</p>
+                            </div>
+                        </div>
+                        <div class="proRe_pdf" >
+                            <i class="cl cl-plus"></i>
+                            <em class="proRe_pdf_tit">上传格式为PDF,<br/>大小不超过10M</em>
+                        </div>
+                        <div class="proadd_tips proadd_tips_r">PDF，产品的帮助手册，方便客户下载查看；<a class="tips_hover">（展示效果）</a><br/>限上传一个，大小不超过10M
+                        </div>
+                    </div>
+                    
+                    <div class="tips_img"><img src="/market/common/images/shilie.jpg"></div>
+                </div>
+                <div class="tel rowm">
+                   <div class="m_left">
+                       <span class=""><i class="must">*</i>商品协议</span>
+                       <a href="http://iuap-tenat-market.oss-cn-beijing.aliyuncs.com/download/xymb.docx" class="spxy_mbxz_btn" target="_blank">模板下载</a>
+                   </div>
+                   <div class="userAddInput productR_myEditor2" ></div>
+                   <div class="proadd_tips">客户购买该商品时需要同意的客户与服务商之间的合作协议</div>
+                   
+               </div>
+
+            </div>
+
+
+        </div>
+            <div class="next_newbtn " data-bind="click:submitMo" ><span>提交</span></div>
+            <div class="next_newbtn prev_newbtn" data-bind="click:preview" ><span>预览</span></div>
+            <div class="next_newbtn prev_newbtn"  data-bind="click:goback" id="userAddTest_goback"><span><i class="cl cl-arrow-left"></i>上一步</span></div>
+    </div>
+</div>
+</div>
+<div class="productRelease_tmp">
+    <div class="productRelease_tmp_mid">
+        <div class="productRelease_tmp_mid_t">商品预览<i data-bind="click:closeiframe" class="cl cl-bigclose-o cursor"></i></div>
+        <div class="productRelease_tmp_mid_c">
+            <iframe id="iframe_productRelease" class="iframe_productRelease"  width="100%" frameborder="0"></iframe>
+        </div>
+
+    </div>
+</div>
