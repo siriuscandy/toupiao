@@ -1,0 +1,37 @@
+ <div class="container-fixed " style="background:#fff; padding-top:20px">
+     <div class="row authlistTop_top"><div class="backBtn" data-bind="click:goback" style="top:10px;"><i class="cl cl-arrow-left"></i>返回列表</div>作品详情</div>
+     
+     <!--<div class="order_Status" data-bind="visible:data().orderStatus==2">订单状态:<span class="red_730"> 未支付 </span>请于<span>2017-02-21 10:10：10 </span>前支付完成，若未及时付款，系统将自动取消订单。</div>-->
+    
+        <div class="order-detail-items-title" >投稿信息</div>
+        <div class="order-detail-mes">
+            <table class="detail_table">
+                <tr>
+                    <th>编号</th>
+                    <th>作品名称</th>
+                    <th >投稿人</th>
+                    <th >手机号</th>
+                    <th>地址</th>
+                    <!--<th width="25%"></th>-->
+                </tr>
+                <tr>
+                    <td data-bind = "text:data().id"></td>
+                    <td data-bind = "text:data().name"></td>
+                    <td data-bind = "text:data().authername"></td>
+                    <td data-bind = "text:data().phonenumber"></td>
+                    <td data-bind = "text:data().address"></td>
+                    <!--<td class="align_right pr4c fixBtn"></td>-->
+                </tr>
+            </table>
+            <div class="order-detail-mes-bottom">
+                <div class="fl">
+                    <span class="order-detail-items-text">投稿详情：</span>
+                    <span data-bind="text:data().detail"></span>
+                </div>
+                
+            </div>
+        </div>
+        <div class="order-detail-items-title" >作品图片</div>
+        <div data-bind="foreach: data().images" class="works_img"><img data-bind="attr:{'src':$data}"/></div>
+             
+</div>

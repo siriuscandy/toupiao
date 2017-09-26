@@ -11,9 +11,6 @@ define(['jquery'], function() {
                     },
                     contentType:"application/json",
                     cache:false,
-                    beforeSend:function(xhr){
-                        xhr.setRequestHeader('Authorization', "OAuth2 "+getCookie('at'));
-                    },
                     dataType : 'json',
                     success : function(res) {
                         if (res && res.needrelogin) { //对请求结果进行特殊处理

@@ -128,7 +128,11 @@ require(['jquery', 'knockout','dialogminBack', 'bootstrap', 'director','moment']
                 var path = this.hash.replace('#', '');
                 addRouter(path);
             });
-
+            
+            addRouter('/works/detail/detail/:id');
+            addRouter('/rate/detail/detail/:id');
+            addRouter('/rate/detaillist/detaillist/:id/:id2');
+            addRouter('/user/detail/detail/:id');
             window.router.init();
 
         });

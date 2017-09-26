@@ -1,10 +1,9 @@
 
-define([ 'jquery', 'knockout', 'text!pages/works/list/list.html','dialogmin',
+define([ 'jquery', 'knockout', 'text!pages/user/list/list.html','dialogmin',
     'bootstrap','uui','ajaxCom'
 ], function($, ko, template,dialogmin,b,uui,ajaxCom) {
     //接口
-    var pageUrl = '/vote/works/list'; //列表加载
-    var changUrl = '/vote/works/changestatus'; //上下架 删除
+    var pageUrl = '/vote/user/list'; //列表加载
 
     var viewModel = {
         data : {
@@ -29,7 +28,7 @@ define([ 'jquery', 'knockout', 'text!pages/works/list/list.html','dialogmin',
         window.history.go(-1);
     };
     viewModel.godetail = function(id){
-        window.router.setRoute("/works/detail/detail/"+id);
+        window.router.setRoute("/user/detail/detail/"+id);
         return false;
     };
     viewModel.goupstore = function(wid){

@@ -1,5 +1,5 @@
 
-define([ 'jquery', 'knockout', 'text!pages/works/list/list.html','dialogmin',
+define([ 'jquery', 'knockout', 'text!pages/rate/list/list.html','dialogmin',
     'bootstrap','uui','ajaxCom'
 ], function($, ko, template,dialogmin,b,uui,ajaxCom) {
     //接口
@@ -29,7 +29,7 @@ define([ 'jquery', 'knockout', 'text!pages/works/list/list.html','dialogmin',
         window.history.go(-1);
     };
     viewModel.godetail = function(id){
-        window.router.setRoute("/works/detail/detail/"+id);
+        window.router.setRoute("/rate/detail/detail/"+id);
         return false;
     };
     viewModel.goupstore = function(wid){
