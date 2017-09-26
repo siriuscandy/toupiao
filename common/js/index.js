@@ -130,9 +130,7 @@ require(['jquery', 'knockout','dialogminBack', 'bootstrap', 'director','moment']
             });
             
             addRouter('/works/detail/detail/:id');
-            addRouter('/rate/detail/detail/:id');
-            addRouter('/rate/detaillist/detaillist/:id/:id2');
-            addRouter('/user/detail/detail/:id');
+            addRouter('/modify/detail/detail');
             window.router.init();
 
         });
