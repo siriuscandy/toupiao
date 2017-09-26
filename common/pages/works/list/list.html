@@ -1,5 +1,5 @@
 <div class="container-fixed">
-	<div class="row authlistTop_top">作品管理</div>
+	<div class="row authlistTop_top">打分列表</div>
 	<div class="row appmanlist_top">
 		<!--<div class="appmanlist_top_right " >-->
 		<!--<input type="text" name="search_LIKE_name" class="input_search input-medium" data-bind="value:searchText" placeholder="搜索商品"/>&nbsp;&nbsp;-->
@@ -25,13 +25,7 @@
 						<option value="6">日常用品</option>
 					</select>
 				</li>
-				<li><span>状态：</span> 
-					<select class="download-input workstatus">
-						<option value="0">全部</option>
-						<option value="1">下架</option>
-						<option value="2">已发布</option>
-				</select>
-				</li>
+			
 				<li><span>编号：</span> 
 					<input type="text" class="download-input searchKeyid" placeholder="编号">
 				</li>
@@ -57,7 +51,6 @@
 					<th width="20%" align="center">作品名称</th>
 					<th width="10%" align="center">发布日期</th>
 					<th width="10%" align="center">分数</th>
-					<th width="10%" align="center">状态</th>
 					<th width="20%" align="center">操作</th>
 
 				</tr>
@@ -69,12 +62,8 @@
 					<td data-bind="text:name"></td>
 					<td data-bind="text:pubdate"></td>
 					<td data-bind="text:score"></td>
-					<td data-bind="text:status"></td>
 					<td>
-						<span class="cursor" data-bind="click:function(){$parent.godetail(id)}">查看</span>
-						<span class="cursor" data-bind="click:function(){$parent.goupstore(id)},if:status==1">上架</span>
-						<span class="cursor" data-bind="click:function(){$parent.godownstore(id)},if:status==2">下架</span>
-						<span class="cursor" data-bind="click:function(){$parent.delete(id)}">删除</span>
+						<span class="cursor" data-bind="click:function(){$parent.godetail(id)}">打分</span>
 					</td>
 
 				</tr>

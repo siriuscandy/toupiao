@@ -1,0 +1,90 @@
+<div class="container-fixed">
+	<div class="row authlistTop_top">作品管理</div>
+	<div class="row appmanlist_top">
+		<!--<div class="appmanlist_top_right " >-->
+		<!--<input type="text" name="search_LIKE_name" class="input_search input-medium" data-bind="value:searchText" placeholder="搜索商品"/>&nbsp;&nbsp;-->
+		<!--<div class="search_btn" id="search_btn" ><i class="fa fa-search" data-bind="click:searchGo"></i></div>-->
+		<!--</div>-->
+		<form action="#" id="download-filter">
+			<ul class="download-filter-box row">
+				<li><span>打分：</span> 
+					<select class="download-input scoreclass">
+						<option value="0">全部</option>
+						<option value="1">未打分</option>
+						<option value="2">已打分</option>
+					</select>
+				</li>
+				<li><span>分类：</span> 
+					<select class="download-input workclass">
+						<option value="0">全部</option>
+						<option value="1">书法</option>
+						<option value="2">绘画</option>
+						<option value="3">雕塑</option>
+						<option value="4">纪念章</option>
+						<option value="5">饰品</option>
+						<option value="6">日常用品</option>
+					</select>
+				</li>
+				<li><span>状态：</span> 
+					<select class="download-input workstatus">
+						<option value="0">全部</option>
+						<option value="1">下架</option>
+						<option value="2">已发布</option>
+				</select>
+				</li>
+				<li><span>编号：</span> 
+					<input type="text" class="download-input searchKeyid" placeholder="编号">
+				</li>
+				<li><span>名称：</span> 
+					<input type="text" class="download-input searchKey" placeholder="名称">
+				</li>
+			</ul>
+			<div class="download-filter-operation" style="text-align: right">
+				<input type="button" class="btn_e" value="搜索" data-bind="click:searchGo" />
+			</div>
+		</form>
+	</div>
+
+	<!-- 列表区域  -->
+
+	<div class="table-responsive authlistTable ">
+		<table
+			class="table table-bordered table-condensed table-hover usertable">
+			<thead>
+				<tr class="authlist_tbtit" style="background: #f0f0f0;">
+					<th width="15%" align="center">编号</th>
+					<th width="15%" align="center">缩略图</th>
+					<th width="20%" align="center">作品名称</th>
+					<th width="10%" align="center">发布日期</th>
+					<th width="10%" align="center">分数</th>
+					<th width="10%" align="center">状态</th>
+					<th width="20%" align="center">操作</th>
+
+				</tr>
+			</thead>
+			<tbody data-bind="foreach: data.content" class="authlist_tb">
+				<tr style="cursor: auto">
+					<td data-bind="text:id"></td>
+					<td ><img data-bind="attr:{'src':img}" style="width:100px;padding:10px;min-height:100px;overflow:hidden"/></td>
+					<td data-bind="text:name"></td>
+					<td data-bind="text:pubdate"></td>
+					<td data-bind="text:score"></td>
+					<td data-bind="text:status"></td>
+					<td>
+						<span class="cursor" data-bind="click:function(){$parent.godetail(id)}">查看</span>
+						<span class="cursor" data-bind="click:function(){$parent.goupstore(id)},if:status==1">上架</span>
+						<span class="cursor" data-bind="click:function(){$parent.godownstore(id)},if:status==2">下架</span>
+						<span class="cursor" data-bind="click:function(){$parent.delete(id)}">删除</span>
+					</td>
+
+				</tr>
+			</tbody>
+		</table>
+		<div
+			style="text-align: right; float: right; clear: both; margin-right: 40px;"
+			id='pagination' class='u-pagination'></div>
+		<div class="clear"></div>
+	</div>
+</div>
+</div>
+

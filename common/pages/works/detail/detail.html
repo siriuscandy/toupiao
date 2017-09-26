@@ -5,7 +5,7 @@
     
         <div class="order-detail-items-title" >投稿信息</div>
         <div class="order-detail-mes">
-            <table class="detail_table">
+            <table class="detail_table" style="width: 100%;    margin-top: 10px;">
                 <tr>
                     <th>编号</th>
                     <th>作品名称</th>
@@ -33,5 +33,16 @@
         </div>
         <div class="order-detail-items-title" >作品图片</div>
         <div data-bind="foreach: data().images" class="works_img"><img data-bind="attr:{'src':$data}"/></div>
-             
+        <div class="order-detail-items-title" >打分</div>
+        <div class="works_score">
+            <span data-id="5">5分</span>
+            <span data-id="4">4分</span>
+            <span data-id="2">3分</span>
+            <span data-id="3">2分</span>
+            <span data-id="1">1分</span>
+        </div>
+        <div class="works_pingyu">
+            <textarea class="text" value="填写评语"></textarea>
+            <div class="pingyu_btn">提交</div>
+        </div>
 </div>
