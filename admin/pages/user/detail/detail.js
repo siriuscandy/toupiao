@@ -1,9 +1,7 @@
 define([ 'jquery', 'knockout', 'text!pages/user/detail/detail.html','dialogmin',
       ],
     function($, ko, template,dialogmin) {
-        var modifyUrl = "/shopedit/modify";
-        var getUrl = "/shopedit/modify";
-
+        var modifyUrl = "/vote/user/edit";
         var viewModel = {
             data :  ko.observable({}),
             id:"",
@@ -15,25 +13,22 @@ define([ 'jquery', 'knockout', 'text!pages/user/detail/detail.html','dialogmin',
         viewModel.submitMo = function() {
           
             var queryData = {
-                resCode: viewModel.data().resCode,
-                resName: viewModel.data().resName,
-                typeId: viewModel.data().typeId,
-                brief: UE.getEditor("myEditor"+edtime+"").getContentTxt(),
-                description: viewModel.data().description,
-                icon: viewModel.data().userAvator,
-                detail: viewModel.detailimg,
-                resId: viewModel.id
+                name: viewModel.data().name,
+                phonenumber: viewModel.data().phonenumber,
+                account: viewModel.data().account,
+                password:viewModel.data().password,
+                id: viewModel.id,
             };
 
-            if(viewModel.data().resCode==undefined||viewModel.data().resCode==""){
-                dialogmin('您的编码还没填呢~');
-                return false
-            }
+            // if(viewModel.data().resCode==undefined||viewModel.data().resCode==""){
+            //     dialogmin('您的编码还没填呢~');
+            //     return false
+            // }
 
-            if(viewModel.data().resName==undefined||viewModel.data().resName==""){
-                dialogmin('您的名称还没填呢~');
-                return false
-            }
+            // if(viewModel.data().resName==undefined||viewModel.data().resName==""){
+            //     dialogmin('您的名称还没填呢~');
+            //     return false
+            // }
 
             $.ajax({
                 type : 'post',
@@ -56,11 +51,11 @@ define([ 'jquery', 'knockout', 'text!pages/user/detail/detail.html','dialogmin',
             });
 
         };
-        viewModel.load = function(id){
+        viewModel.load = function(){
 
             $.ajax({
                 type : 'get',
-                url : $ctx + getUrl+"?resId="+id,
+                url : $ctx + modifyUrl+"/"+viewModel.id,
                 cache:false,
                 dataType : 'json',
                 success : function(res) {

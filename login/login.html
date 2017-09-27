@@ -32,22 +32,22 @@
 
     <div class="container">
 
-      <form class="login-form" action="index.html">        
+      <form class="login-form" >        
         <div class="login-wrap">
             <p class="login-img"><i class="icon_lock_alt"></i></p>
             <div class="input-group">
               <span class="input-group-addon"><i class="icon_profile"></i></span>
-              <input type="text" class="form-control" placeholder="用户名" autofocus>
+              <input type="text" class="form-control username" placeholder="用户名" autofocus>
             </div>
             <div class="input-group">
                 <span class="input-group-addon"><i class="icon_key_alt"></i></span>
-                <input type="password" class="form-control" placeholder="密码">
+                <input type="password" class="form-control password" placeholder="密码">
             </div>
             <label class="checkbox">
                 <!-- <input type="checkbox" value="remember-me"> Remember me -->
-                <span class="pull-right"> <a href="#"> 忘记密码?</a></span>
+                <span class="pull-left tips" style="    color: #f00;"> </span>
             </label>
-            <button class="btn btn-primary btn-lg btn-block" type="submit">登录</button>
+            <button class="btn btn-primary btn-lg btn-block btnlogin" type="button">登录</button>
             <!-- <button class="btn btn-info btn-lg btn-block" type="submit">注册</button> -->
         </div>
       </form>
@@ -64,6 +64,47 @@
         </div>
     </div>
 
-
+<script src="../admin/trd/jquery/jquery.2.1.4.min.js"></script>
+<script>
+    $(".btnlogin").click(function(){
+        var usernameval =$(".username").val();
+        var passwordval =$(".password").val();
+        if(usernameval==""){
+            $(".tips").html("请输入用户名");
+            return false
+        }
+        if(passwordval==""){
+            $(".tips").html("请输入密码");
+            return false
+        }
+        $.ajax({
+            type : 'get',
+            dataType : 'json',
+            async : false,
+            data : {
+                username:$.trim($(".username").val()),
+                password:$.trim($(".password").val())
+            },
+            url : "/vote/user/login",
+            contentType:"application/json",
+            success : function(res) {
+                if (res.status==1){
+                    if(res.data.type==1){
+                        window.location.href = "/admin/index.html"
+                    }else {
+                        window.location.href = "/common/index.html"
+                    }
+                    window.sessionStorage.userId = res.data.userId;
+                }else{
+                    $(".tips").html(res.msg);
+                }
+            },
+            error : function(XMLHttpRequest, textStatus, errorThrown) {
+                $(".tips").html("网络错误!!");
+            }
+        });
+    })
+    
+</script>
   </body>
 </html>
