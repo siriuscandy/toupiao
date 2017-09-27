@@ -1,0 +1,188 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<title>麦朵尔</title>
+<link rel="stylesheet" href="css/mui.min.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="../admin/trd/uploader/css/webuploader.css">
+</head>
+
+<body>
+	<div class="content">
+    	<!--banner start-->
+    	<div class="banner"><img src="img/banner.jpg"></div>
+    	<!--banner end-->
+        <!--新品发布-->
+		<div class="aui-week t-line">
+            <h2><div class="iconC"></div><div class="zTitle">发布作品</div><div class="fTitle">/ PUBLISH WORKS </div></h2>
+            <div class="fbzpLine">
+            	<div class="fbzpA">
+                	<div class="lineLeft">作品名称</div>
+                    <div class="lineRight"><input type="text" class="zpmc W_name"></div>
+                </div>
+                <div class="fbzpA">
+                	<div class="lineLeft">作品分类</div>
+                    <div class="lineRight">
+                        <select name="" class="flnr W_class">
+                            <option value="1">书法</option>
+                            <option value="2">绘画</option>
+                            <option value="3">雕塑</option>
+                            <option value="4">纪念章</option>
+                            <option value="5">饰品</option>
+                            <option value="6">日常用品</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="fbzpA">
+                	<div class="lineLeft addPic">上传图片</div>
+                    <div class="lineRight">
+                        
+                            <div class="picyl"></div>
+                            <div class="upload-img">
+                            <!-- <input type="file" name="file0" id="file0" class="sctp" multiple /> -->
+                            <img src="img/icon.jpg"  alt="上传照片" title="">
+                    </div>
+                </div>
+                <div class="fbzpA fbzpB">
+                	<div class="lineLeft addPic">作品描述</div>
+                    <div class="lineRight"><textarea name="" cols="" rows="" class="mssrk W_detail"></textarea></div>
+                </div>
+                <div class="fbzpA">
+                	<div class="lineLeft">手机号码</div>
+                    <div class="lineRight"><input type="text" class="zpmc W_phonenumber"></div>
+                </div>
+                <div class="fbzpA">
+                	<div class="lineLeft">地      址</div>
+                    <div class="lineRight"><input type="text" class="zpmc W_address"></div>
+                </div>
+                <div class="fbzpA"><div class="tjBnt">作品提交</div></div>
+            </div>
+        </div>
+        
+        <div style="height:50px"></div>
+        <nav class="mui-bar mui-bar-tab">
+            <div class="t-line">
+                <a href="wdzp.html" class="aui-tab-item">
+                    <span class="mui-tab-label">我的作品</span>
+                </a>
+                <a href="index.html" class="aui-tab-item mui-active" >
+                    <span class="mui-tab-label">报名投稿</span>
+                </a>
+                <a class="aui-tab-item" href="csgz.html">
+                    <span class="mui-tab-label">参赛规则</span>
+                </a>
+            </div>
+        </nav>
+    </div>
+<style>
+    .webuploader-pick-hover{background: none}
+</style>
+<script src="js/mui.min.js"></script>
+<script src="../admin/trd/jquery/jquery.2.1.4.min.js"></script>
+<script src="../admin/trd/uploader/js/webuploader.min.js"></script>
+<script>
+    UpdateLogo();
+     function UpdateLogo(){ //LOGO上传
+            var up = WebUploader.create({
+                server: '/vote/uploadpic',
+                swf: '../admin/trd/uploader/swf/Uploader.swf?v=' + Math.random(),
+                pick: '.upload-img',
+                accept: [ //可以接受的文件类型，数组
+                    {
+                        title: 'Images',
+                        extensions: 'jpg,jpeg,png',
+                        mimeTypes: 'image/jpg,image/jpeg,image/png'
+                    }
+                ],
+                auto: true,
+                compress: false,
+                fileSingleSizeLimit:5000*1024
+            });
+            up.on("error",function (type){
+                if (type=="Q_TYPE_DENIED"){
+                    dialogmin("请上传图片格式文件");
+                }else if(type=="F_EXCEED_SIZE"){
+                    dialogmin("文件大小不能超过5m");
+                }else if(type=="Q_EXCEED_NUM_LIMIT"){
+                    dialogmin("文件个数不能超过5");
+                }
+            });
+            up.on( 'uploadSuccess', function( file, res ) {
+                if(res.fileName != '-1'){  // -1  表示文件太大，没有上传
+                    $(".picyl").append("<img src="+res.data.url+">");
+
+                }
+            });
+            up.on( 'uploadError', function( file ) {
+                dialogmin('上传失败');
+            });
+           
+            up.on( 'fileQueued', function( file ) {
+                if( file.size > 1024*5000) {
+                    dialogmin("文件大小不能超过5m");
+                    return false;
+                }
+
+            });
+        };
+    var dialogmin = function(content,time){
+            if(time==undefined){time = 2000;    }
+			var dialogdiv = "<div class='dialogmin'><span>"+content+"</span></div>";
+			$('body').append(dialogdiv);
+			setTimeout(function(){
+				$(".dialogmin").remove();
+			},time)
+	};
+    $(".tjBnt").click(function(){
+        var W_images = [];
+        $(".picyl").find("img").each(function(){
+            var u = $(this).attr("src");
+            W_images.push(u)
+        })
+        var W_name =$(".W_name").val();
+        var W_class =$(".W_class").val();
+        var W_detail =$(".W_detail").val();
+        var W_phonenumber =$(".W_phonenumber").val();
+        var W_address =$(".W_address").val();
+        if(W_name==""){
+            dialogmin("请输入作品名");
+            return false
+        }
+        if(W_detail==""){
+            dialogmin("请输入作品描述");
+            return false
+        }
+        var qdata = {
+                name:$.trim(W_name),
+                class:$.trim(W_class),
+                detail:$.trim(W_detail),
+                phonenumber:$.trim(W_phonenumber),
+                address:$.trim(W_address),
+                userId:"",
+                images:W_images
+            }
+        $.ajax({
+            type : 'post',
+            dataType : 'json',
+            async : false,
+            data : qdata,
+            url : "/vote/enter",
+            contentType:"application/json",
+            success : function(res) {
+                if (res.status==1){
+                    
+                }else{
+                    dialogmin(res.msg);
+                }
+            },
+            error : function(XMLHttpRequest, textStatus, errorThrown) {
+                dialogmin("网络错误!!");
+            }
+        });
+    })
+    
+</script>
+</body>
+</html>

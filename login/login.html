@@ -90,9 +90,9 @@
             success : function(res) {
                 if (res.status==1){
                     if(res.data.type==1){
-                        window.location.href = "/admin/index.html"
+                        window.location.href = "../admin/index.html"
                     }else {
-                        window.location.href = "/common/index.html"
+                        window.location.href = "../common/index.html"
                     }
                     window.sessionStorage.userId = res.data.userId;
                 }else{

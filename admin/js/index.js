@@ -200,17 +200,13 @@ require(['jquery', 'knockout','dialogminBack', 'bootstrap', 'director','moment']
         }
         if(page=="works"){
             $(".menuleftClass").eq(0).addClass("active");
-        }else if(page=="shopedit" && page1=="edit"){
+        }else if(page=="rate"){
             $(".menuleftClass").eq(1).addClass("active");
-        }else if(page=="shopedit" && page1=="detail"){
+        }else if(page=="user"){
             $(".menuleftClass").eq(2).addClass("active");
-        }else if(page=="shopping"){
-            $(".menuleftClass").eq(3).addClass("active");
-        }else if(page=="Info"){
-            $(".menuleftClass").eq(4).addClass("active");
         }else if(page==""){
             window.router.setRoute('/works/list/list');
-            
+            $(".menuleftClass").eq(0).addClass("active");
         }
     }
 

@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<title>麦朵尔</title>
+<link rel="stylesheet" href="css/mui.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+	<div class="content">
+    	<!--banner start-->
+    	<div class="banner"><img src="img/banner.jpg"></div>
+    	<!--banner end-->
+        <!--新品发布-->
+		<div class="aui-week t-line">
+            <h2><div class="iconC"></div><div class="zTitle">我的作品</div><div class="fTitle">/ PUBLISH WORKS </div></h2>
+            <div class="fbzpLine">
+            	<div class="mui-table-view mui-grid-view">
+                        <div class="mui-table-view-cell mui-media mui-col-xs-6">
+                            <a href="zpxq.html">
+                                <img class="mui-media-object" src="img/pic1.jpg">
+                                <div class="mui-media-body">上门保洁-房间彻底清理</div>
+                                <div class="mui-media-body jgPice">
+                                    <div class="jgL"><div class="jqfh">2017-8-9</div></div>
+                                </div>
+                            </a>
+                        </div>
+                        	
+                </div>
+            </div>
+        </div>
+        
+        <div style="height:50px"></div>
+        <nav class="mui-bar mui-bar-tab">
+            <div class="t-line">
+                <a href="wdzp.html" class="aui-tab-item mui-active">
+                    <span class="mui-tab-label">我的作品</span>
+                </a>
+                <a href="index.html" class="aui-tab-item" >
+                    <span class="mui-tab-label">报名投稿</span>
+                </a>
+                <a class="aui-tab-item" href="csgz.html">
+                    <span class="mui-tab-label">参赛规则</span>
+                </a>
+            </div>
+        </nav>
+    </div>
+<script src="js/mui.min.js"></script>
+<script src="../admin/trd/jquery/jquery.2.1.4.min.js"></script>
+<script src="../admin/trd/knockout/knockout-3.2.0.min.js"></script>
+<script>
+    var viewModel = {
+        data : {
+            content : ko.observableArray([]),
+            totalPages : ko.observable(),
+            number : ko.observable(),
+            totalElements : ko.observable()
+        },
+        searchText : ko.observable(),
+        setData : function(res) {
+            this.data.content(res);
+            this.data.totalPages(res.pages);
+            this.data.number(res.pageNum);
+            this.data.totalElements(res.total);
+        },
+      
+        
+    };
+   
+    var listUrl  =  '/api/showDetailListByZnameAndUid';
+    var Stopload =false;
+    var DataArray= new Array();
+   var GetUrl = '/userModule/getUserModuleDetail'; //获取信息
+    viewModel.load = function(){
+        droploadFun();
+        
+        
+    };
+    viewModel.getiList = function(pageIndex){
+    	
+        var queryData = {
+            pageSize: viewModel.pagesize||10,     //page size 每页显示条数
+            pageNum: pageIndex,    //page num 当前页数
+            zname: "要闻",   //page num 当前页数
+            userid:viewModel.userId
+        };
+        
+        ajaxCom.Loadajax('GET',listUrl,queryData,function(res){
+                
+                   
+                    DataArray =  DataArray.concat(res.list)
+                    viewModel.setData(DataArray);
+                    
+                
+            },function(error){
+             Stopload =true
+                dialogmin("网络错误");
+        })
+    }
+    
+    //viewModel.data(res);
+    //viewModel.load(1);
+    viewModel.load(); 
+    var droploadFun = function(){
+        // 页数
+        var page = 0;
+
+        // dropload
+        $('.content').dropload({
+            scrollArea : window,
+            loadDownFn : function(me){
+                page++;
+                // 拼接HTML
+                var result = '';
+                 if(Stopload){ return false}
+                viewModel.getiList(page);
+                setTimeout(function(){
+                me.resetload();
+                    
+                },1000) 
+            }
+        });
+    };
+    ko.applyBindings(viewModel);
+</script>
+</body>
+</html>

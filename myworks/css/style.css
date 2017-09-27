@@ -1,0 +1,186 @@
+@charset "utf-8";
+/* CSS Document */
+html,body{height:100%;}
+/*h1,h2,h3,ul,li{padding:0; margin:0;}
+ul,li{display:inline;}
+
+em{font-style:normal;}*/
+img{width:100%;}
+
+/*底部导航*/
+.mui-bar-tab .aui-tab-item {display: table-cell;overflow: hidden;width: 1%;height: 50px;text-align: center;vertical-align: middle;white-space: nowrap;text-overflow: ellipsis;color: #caafa1; background:#1b2b54; border-right:1px solid #fff;}
+.mui-bar-tab .aui-tab-item.mui-active{color: #ffefe6;}
+.mui-bar-tab .aui-tab-item .mui-icon{top: 6px;width: 24px;height: 26px;padding-top: 0;padding-bottom: 0;}
+.mui-bar-tab .aui-tab-item .mui-icon~.mui-tab-label {font-size: 14px;display: block;overflow: hidden;text-overflow: ellipsis;}
+
+.content{background:#f3f3f3; height:100%;}
+.iconC{width:2px; height:20px; float:left; background:#cda053; margin-left:15px;}
+.aui-week h2{font-size:16px;font-weight:normal;padding-bottom:15px; background:#f4f5f9; padding-top:15px; margin-bottom:0px; margin-top:0;text-indent:20px;overflow:hidden;}
+.aui-week{padding-top:15px; padding-top:0; background:#f4f5f9;}
+.fbzpA{padding:0 3%; line-height:35px; margin-bottom:10px;}
+.lineLeft{width:65px; display:inline-block; font-size:14px; color:#484849;}
+.lineRight{ display:inline-block;width:75%; }
+.lineRight .zpmc{margin-bottom:0;padding:7px 8px; }
+.lineRight .flnr{border: 1px solid #ccc !important;margin-bottom:0;padding:7px 8px;}
+.picyl{width:70px; height:70px; display:inline-block; border:1px solid #c6dce6; border-radius:5px; margin-right:10px;}
+.picyl img{width:70px; height:70px;border-radius:5px;}
+.upload-img{ width:70px; height:70px; display:inline-block;}
+.sctp{position: absolute;top: 149px;width:70px; height:70px;filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0);filter:alpha(opacity=0);-moz-opacity:0;-khtml-opacity: 0;opacity:0;background: none;border: none;cursor: pointer;}
+.chk_3 {display: none;}
+.chk_3 + label {
+	background-color: #fafbfa;
+	padding: 9px;
+	border-radius: 50px;
+	display: inline-block;
+	position: relative;
+	margin-right: 30px;
+	-webkit-transition: all 0.1s ease-in;
+	transition: all 0.1s ease-in;
+	width: 40px;
+	height: 15px;
+}
+.chk_3  + label:after {
+	content: ' ';
+	position: absolute;
+	top: 0;
+	-webkit-transition: box-shadow 0.1s ease-in;
+	transition: box-shadow 0.1s ease-in;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	border-radius: 100px;
+	box-shadow: inset 0 0 0 0 #eee, 0 0 1px rgba(0,0,0,0.4);
+}
+.chk_3  + label:before {
+	content: ' ';
+	position: absolute;
+	background: white;
+	top: 1px;
+	left: 1px;
+	z-index: 999999;
+	width: 31px;
+	-webkit-transition: all 0.1s ease-in;
+	transition: all 0.1s ease-in;
+	height: 31px;
+	border-radius: 100px;
+	box-shadow: 0 3px 1px rgba(0,0,0,0.05), 0 0px 1px rgba(0,0,0,0.3);
+}
+.chk_3:active + label:after {box-shadow: inset 0 0 0 20px #eee, 0 0 1px #eee;}
+.chk_3:active + label:before {width: 37px;}
+.chk_3:checked:active + label:before {width: 37px;left: 20px;}
+.chk_3  + label:active {box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1);}
+.chk_3:checked + label:before {
+	content: ' ';
+	position: absolute;
+	left: 26px;
+	border-radius: 100px;
+}
+.chk_3:checked + label:after {
+	content: ' ';
+	font-size: 1.5em;
+	position: absolute;
+	background: #00adf2;
+	box-shadow: 0 0 1px #4cda60;
+}
+.addPic{top:-45px; position:relative;}
+.mssrk{height:80px;}
+.fbzpA.fbzpB{height:80px;}
+.tjBnt{width:90px; height:35px; line-height:35px; text-align:center; display:block; margin:0 auto; font-size:14px; color:#fff; background:#cfa153;}
+.fTitle{width:auto; float:left; font-size:14px; color:#999; text-indent:10px;line-height: 18px;}
+.zTitle{width:auto; float:left;}
+/****************参赛规则*****************/
+.gzCon{font-size:14px; padding:0 3%; line-height:20px; color:#333;}
+
+/****************我的作品*****************/
+.find_nav {
+    width: 100%;
+    height: 50px;
+    background-color: #f9f9f9;
+    position: fixed;
+    top: 0;
+    z-index: 9999;
+    border-bottom: 1px solid #ddd;
+    display: -moz-box;
+    display: -webkit-box;
+    display: box;
+}
+.find_nav_left {
+    height: 50px;
+    position: relative;
+    overflow: hidden;
+    -moz-box-flex: 1;
+    -webkit-box-flex: 1;
+    box-flex: 1;
+}
+.find_nav_list {
+    position: absolute;
+    left: 0;
+}
+.find_nav_list ul {
+    position: relative;
+    white-space: nowrap;
+    font-size: 0;
+}
+.find_nav_list ul li {
+    display: inline-block;
+    padding: 0;
+	margin:0 20px;
+}
+.find_nav_list ul li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    line-height: 48px;
+    font-size: 16px;
+    text-align: center;
+    color: #333;
+}
+.find_nav_cur a {
+    color: #000 !important;border-bottom:2px solid #cfa153 !important; height:50px;
+}
+.find_nav_list a.active{ color:#C00; border-bottom:2px solid #000; height:50px;}
+.sideline {
+    display: block;
+    position: absolute;
+    border: 0;
+    height: 2px;
+    background-color: #48a5f4;
+    left: 0;
+    top: 68px;
+    pointer-events: none;
+}
+.swipe{ padding:70px 0 0 0;}
+.mui-media-body.jgPice .jgL .jqfh{ text-align:right;}
+
+.my-gallery {width: 100%;float: left;}
+.my-gallery img {width: 100%;height: auto;}
+.my-gallery figure {display: block;float: left; margin: 0 5px 5px 0;width: 150px;}
+.my-gallery figcaption {display: none;}
+
+/****/
+.swiper-container {width:100%;}
+.swiper-slide {text-align: center;font-size:1.0625rem;background: #fff;
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+align-items: center;}
+.swiper-pagination{height:50px;line-height:50px;color:#fff;background:#000;}
+.gbBnt{width:20px; height:20px; float:right; position:absolute; z-index:10; right:15px; top:16px;}
+.gbBnt img{width:20px; height:20px;}
+.zpxqCon{background:#000;}
+.cpxqCon{padding:10px 5%; font-size:14px; color:#fff; line-height:20px;}
+
+
+.dialogmin{z-index:9999;position:fixed;width:50%;top:30%;background:rgba(0,0,0,.5);color:#fff;padding:10px 5px;left:25%;text-align:center;border-radius:10px}
+
+
+
