@@ -4,7 +4,7 @@ define([ 'jquery', 'knockout', 'text!pages/works/list/list.html','dialogmin',
 ], function($, ko, template,dialogmin,b,uui,ajaxCom) {
     //接口
     var pageUrl = '/vote/works/list'; //列表加载
-    var changUrl = '/vote/works/edit'; //上下架 删除
+    var changUrl = '/vote/works/edit/'; //上下架 删除
 
     var viewModel = {
         data : {
@@ -34,10 +34,9 @@ define([ 'jquery', 'knockout', 'text!pages/works/list/list.html','dialogmin',
     };
     viewModel.goupstore = function(wid){
         var queryData = {
-            id:wid,
             status:"2"
         }
-        ajaxCom.Loadajax('get',changUrl,queryData,function(res){
+        ajaxCom.Loadajax('get',changUrl+wid,queryData,function(res){
             if(res.status==1){ 
                 dialogmin("上架成功");
                 viewModel.load(viewModel.data.number(),"")
@@ -47,10 +46,9 @@ define([ 'jquery', 'knockout', 'text!pages/works/list/list.html','dialogmin',
     };
     viewModel.godownstore = function(wid){
        var queryData = {
-            id:wid,
             status:"1"
         }
-        ajaxCom.Loadajax('get',changUrl,queryData,function(res){
+        ajaxCom.Loadajax('get',changUrl+wid,queryData,function(res){
             if(res.status==1){ 
                 dialogmin("下架成功");
                 viewModel.load(viewModel.data.number(),"")
@@ -59,10 +57,9 @@ define([ 'jquery', 'knockout', 'text!pages/works/list/list.html','dialogmin',
     };
     viewModel.delete = function(wid){
        var queryData = {
-            id:wid,
             status:"3"
         }
-        ajaxCom.Loadajax('get',changUrl,queryData,function(res){
+        ajaxCom.Loadajax('get',changUrl+wid,queryData,function(res){
             if(res.status==1){ 
                 dialogmin("删除成功");
                 viewModel.load(viewModel.data.number(),"")

@@ -81,15 +81,13 @@ define([ 'jquery', 'knockout', 'text!pages/rate/list/list.html','dialogmin',
         var queryData = {
             size: viewModel.pagesize || 10,     //page size 每页显示条数
             page: pageIndex,    //page num 当前页数
-            scoreclass:"0",
             workclass:"0",
-            status:"0",
+            orderby:"0",
             searchKey:"",
             id:"",
         };
-        queryData.scoreclass = $(".scoreclass").val();
         queryData.workclass = $(".workclass").val();
-        queryData.status = $(".workstatus").val();
+        queryData.orderby = $(".workstatus").val();
         queryData.searchKey = $(".searchKey").val();
         queryData.id = $(".searchKeyid").val();
        

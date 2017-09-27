@@ -131,6 +131,7 @@ require(['jquery', 'knockout','dialogminBack', 'bootstrap', 'director','moment']
             
             addRouter('/works/detail/detail/:id');
             addRouter('/modify/detail/detail');
+            addRouter('/user/detail/detail');
             window.router.init();
 
         });
@@ -247,25 +248,22 @@ require(['jquery', 'knockout','dialogminBack', 'bootstrap', 'director','moment']
         $("#logout").click(function(){
             dialogminBack('注销','确定注销登录？',function(isok) {
                 if(isok){
-                    var Url = window.location.protocol+"//"+window.location.host+'/market'
-                    window.location.href='/market/logout?SAMLRequest=true&service='+encodeURI(Url);
-                    /*var data = {
-                        userCode: window.sessionStorage.userCode,
-                    };
                     $.ajax({
                         type : 'get',
-                        url : "/market/logout?SAMLRequest=true&service=/market",
-                        data : data,
+                        url : "/vote/user/logout",
                         dataType : 'json',
                         success : function(res) {
                             //console.log(res) ;
-                            window.location.href="res.logouturl" ;
+                            if(res.status==1){
+                                window.location.href="../index.html" ;
+                                
+                            }
                         },
                         error : function(res) {
                             //console.log(res) ;
                            // window.location.href="/market" ;
                         }
-                    });*/
+                    });
                 }
             });
 

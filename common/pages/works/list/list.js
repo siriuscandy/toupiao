@@ -94,7 +94,7 @@ define([ 'jquery', 'knockout', 'text!pages/works/list/list.html','dialogmin',
         queryData.id = $(".searchKeyid").val();
        
 
-        ajaxCom.Loadajax('get',pageUrl,queryData,function(res){
+        ajaxCom.Loadajax('get',pageUrl + "/" +viewModel.userId,queryData,function(res){
             if(res.status==1){
                 viewModel.setData(res.data);
                 var element = document.getElementById("pagination");
@@ -162,6 +162,7 @@ define([ 'jquery', 'knockout', 'text!pages/works/list/list.html','dialogmin',
     var init = function(parm) {
         var pageNum = viewModel.data.number();
         viewModel.firstload = true;
+        viewModel.userId = window.sessionStorage.userId;
         viewModel.load(0,"");
         $(document).keyup(function (e) {
             if (e.keyCode == 13) {

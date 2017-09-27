@@ -3027,6 +3027,7 @@ img[src=""] {
 .order-detail-mes {
 	width: 100%;
 	padding: 0 60px;
+	float: left;
 	margin-top: 20px
 }
 

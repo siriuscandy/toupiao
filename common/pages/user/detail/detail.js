@@ -71,8 +71,9 @@ define([ 'jquery', 'knockout', 'text!pages/user/detail/detail.html','dialogmin',
         };
 
         var init = function(parm){
+            viewModel.id = parm[0];
             viewModel.load(parm[0]);
-            viewModel.id = parm[0]
+            
         };
 
         return {

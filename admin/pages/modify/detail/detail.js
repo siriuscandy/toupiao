@@ -19,7 +19,7 @@ define([ 'jquery', 'knockout', 'text!pages/modify/detail/detail.html','dialogmin
                 // name: viewModel.data().name,
                 // phonenumber: viewModel.data().phonenumber,
                 // account: viewModel.data().account,
-                password: viewModel.data().password,
+                newpassword: viewModel.data().password,
                 oldpassword: viewModel.data().oldpassword,
                 userId: viewModel.userId,
             };
@@ -85,9 +85,10 @@ define([ 'jquery', 'knockout', 'text!pages/modify/detail/detail.html','dialogmin
         };
 
         var init = function(parm){
-            viewModel.load(parm[0]);
             viewModel.userId = window.sessionStorage.userId;
-            viewModel.id = parm[0]
+            viewModel.id = parm[0];
+            viewModel.load(parm[0]);
+            
         };
 
         return {

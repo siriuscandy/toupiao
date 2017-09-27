@@ -23,7 +23,7 @@
                                 <img class="mui-media-object" data-bind="attr:{'src':img}">
                                 <div class="mui-media-body" data-bind="text:name"></div>
                                 <div class="mui-media-body jgPice">
-                                    <div class="jgL"><div class="jqfh" data-bind="text:pubdata">2017-8-9</div></div>
+                                    <div class="jgL"><div class="jqfh" data-bind="text:pubdata"></div></div>
                                 </div>
                             </a>
                         </div>
@@ -69,7 +69,7 @@
         
     };
    
-    var listUrl  =  '/vote/myworks/list/';
+    var listUrl  =  '/vote/myworks/list';
     viewModel.load = function(){
         viewModel.userId = window.sessionStorage.myuserId;
         viewModel.getiList();
@@ -77,17 +77,30 @@
     viewModel.goDetail = function(id){
         window.location.href="zpxq.html?id="+id;
     }
-    viewModel.getiList = function(pageIndex){
+    viewModel.getiList = function(){
         var queryData = {
             pageSize: viewModel.pagesize||10,     //page size 每页显示条数
-            pageNum: pageIndex,    //page num 当前页数
+            pageNum: 0,    //page num 当前页数
         };
-        ajaxCom.Loadajax('GET',listUrl+viewModel.userId,"",function(res){
-                   // DataArray =  DataArray.concat(res.list)
+        $.ajax({
+            type : 'get',
+            dataType : 'json',
+            async : false,
+            data : qdata,
+            url : listUrl,
+            contentType:"application/json",
+            success : function(res) {
+                if (res.status==1){
                     viewModel.setData(res.data);
-            },function(error){
-                dialogmin("网络错误");
-        })
+                }else{
+                    dialogmin(res.msg);
+                }
+            },
+            error : function(XMLHttpRequest, textStatus, errorThrown) {
+                dialogmin("网络错误!!");
+            }
+        });
+       
     }
     
     viewModel.load(); 

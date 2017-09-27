@@ -83,7 +83,8 @@
 <script src="../admin/trd/jquery/jquery.2.1.4.min.js"></script>
 <script src="../admin/trd/uploader/js/webuploader.min.js"></script>
 <script>
-    var MyuserId = window.sessionStorage.myuserId;
+    //var MyuserId = window.sessionStorage.myuserId;
+    var MyuserId = getCookie("openId");
     UpdateLogo();
      function UpdateLogo(){ //LOGO上传
             var up = WebUploader.create({
@@ -161,7 +162,6 @@
                 detail:$.trim(W_detail),
                 phonenumber:$.trim(W_phonenumber),
                 address:$.trim(W_address),
-                userId:MyuserId,
                 images:W_images
             }
         $.ajax({
@@ -183,7 +183,14 @@
             }
         });
     })
-    
+    function getCookie(name)
+        {
+        var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+        if(arr=document.cookie.match(reg))
+        return unescape(arr[2]);
+        else
+        return null;
+        }
 </script>
 </body>
 </html>
