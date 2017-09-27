@@ -15,8 +15,9 @@
 			<tbody data-bind="foreach: data.content" class="authlist_tb">
 				<tr style="cursor: auto">
 					<td data-bind="text:name"></td>
-					<td data-bind="text:score"></td>
-					<td data-bind="text:id"></td>
+					<td data-bind="text:score,visible:score!=null"></td>
+					<td data-bind="visible:score==null">未打分</td>
+					<td data-bind="text:detail"></td>
 				</tr>
 			</tbody>
 		</table>

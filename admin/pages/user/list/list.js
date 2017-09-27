@@ -16,7 +16,7 @@ define([ 'jquery', 'knockout', 'text!pages/user/list/list.html','dialogmin',
         setData : function(res) {
             this.data.content(res.list);
             this.data.totalPages(res.totalPages);
-            this.data.number(res.number + 1);
+            this.data.number(res.number);
             this.data.totalElements(res.totalElements);
         },
         datamodify:ko.observable({}),

@@ -1,7 +1,7 @@
 define([ 'jquery', 'knockout', 'text!pages/modify/detail/detail.html','dialogmin',
       ],
     function($, ko, template,dialogmin) {
-        var modifyUrl = "/vote/change";
+        var modifyUrl = "/vote/user/change";
         var getUrl = "/vote/getUserInfo";
         var TelReg =  /^(13[0-9]|15[012356789]|17[0678]|18[0-9]|14[57])[0-9]{8}$/;//手机号正则
 
@@ -16,9 +16,9 @@ define([ 'jquery', 'knockout', 'text!pages/modify/detail/detail.html','dialogmin
         viewModel.submitMo = function() {
 
             var queryData = {
-                name: viewModel.data().name,
-                phonenumber: viewModel.data().phonenumber,
-                account: viewModel.data().account,
+                // name: viewModel.data().name,
+                // phonenumber: viewModel.data().phonenumber,
+                // account: viewModel.data().account,
                 password: viewModel.data().password,
                 oldpassword: viewModel.data().oldpassword,
                 userId: viewModel.userId,
@@ -39,7 +39,7 @@ define([ 'jquery', 'knockout', 'text!pages/modify/detail/detail.html','dialogmin
                 dataType : 'json',
                 async : false,
                 data : JSON.stringify(queryData),
-                url : $ctx + modifyUrl,
+                url : $ctx + modifyUrl +"/"+viewModel.userId,
                 contentType:"application/json",
                 success : function(data) {
                     if (data.status==1){
@@ -56,31 +56,31 @@ define([ 'jquery', 'knockout', 'text!pages/modify/detail/detail.html','dialogmin
 
         };
         viewModel.load = function(){
-            $(".settled_phone").bind("blur",function(){
-                if(!TelReg.test($(this).val())){
-                    $(this).addClass("errorinput");
+            // $(".settled_phone").bind("blur",function(){
+            //     if(!TelReg.test($(this).val())){
+            //         $(this).addClass("errorinput");
 
-                }else{
+            //     }else{
 
-                }
-            }).bind("focus",function(){
-                $(this).removeClass("errorinput");
+            //     }
+            // }).bind("focus",function(){
+            //     $(this).removeClass("errorinput");
 
-            });
-            $.ajax({
-                type : 'get',
-                url : $ctx + getUrl+"?userId="+viewModel.userId,
-                cache:false,
-                dataType : 'json',
-                success : function(res) {
-                    if(res.status==1){
-                        viewModel.data(res.data);
+            // });
+            // $.ajax({
+            //     type : 'get',
+            //     url : $ctx + getUrl+"?userId="+viewModel.userId,
+            //     cache:false,
+            //     dataType : 'json',
+            //     success : function(res) {
+            //         if(res.status==1){
+            //             viewModel.data(res.data);
                        
-                    }else{
-                        dialogmin("网络错误!!");
-                    }
-                }
-            });
+            //         }else{
+            //             dialogmin("网络错误!!");
+            //         }
+            //     }
+            // });
 
         };
 

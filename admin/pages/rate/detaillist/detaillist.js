@@ -2,7 +2,7 @@
 define([ 'jquery', 'knockout', 'text!pages/rate/detaillist/detaillist.html','dialogmin','ajaxCom'
 ], function($, ko, template,dialogmin,ajaxCom) {
     //接口
-    var pageUrl = '/vote/works/list'; //列表加载
+    var pageUrl = '/vote/rate/detailList'; //列表加载
     var changUrl = '/vote/works/changestatus'; //上下架 删除
 
     var viewModel = {
@@ -16,7 +16,7 @@ define([ 'jquery', 'knockout', 'text!pages/rate/detaillist/detaillist.html','dia
         setData : function(res) {
             this.data.content(res.list);
             this.data.totalPages(res.totalPages);
-            this.data.number(res.number + 1);
+            this.data.number(res.number);
             this.data.totalElements(res.totalElements);
         },
         worksname:ko.observable(),

@@ -61,7 +61,8 @@
 					<td ><img data-bind="attr:{'src':img}" style="width:100px;padding:10px;min-height:100px;overflow:hidden"/></td>
 					<td data-bind="text:name"></td>
 					<td data-bind="text:pubdate"></td>
-					<td data-bind="text:score"></td>
+					<td data-bind="text:score,visible:score!=null"></td>
+					<td data-bind="visible:score==null">未打分</td>
 					<td>
 						<span class="cursor" data-bind="click:function(){$parent.godetail(id)}">打分</span>
 					</td>

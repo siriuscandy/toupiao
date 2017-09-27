@@ -3,7 +3,7 @@ define([ 'jquery', 'knockout', 'text!pages/works/detail/detail.html','dialogmin'
 ], function($, ko, template,dialogmin,ajaxCom) {
     //接口
     var pageUrl = '/vote/works/detail'; //列表加载
-    var submitUrl = '/vote/marking'; //
+    var submitUrl = '/vote/marking/edit'; //
 
     
     var viewModel = {
@@ -17,7 +17,7 @@ define([ 'jquery', 'knockout', 'text!pages/works/detail/detail.html','dialogmin'
     viewModel.submit = function() {
         var Wscore = $(".works_score span.W_active").attr("data-id");
         var pingyu =$(".works_pingyu .text").val();
-        if(score == "" || score== undefined){
+        if(Wscore == "" || Wscore== undefined){
             dialogmin("请选择分数");
             return false
         }

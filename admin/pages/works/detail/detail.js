@@ -2,10 +2,7 @@
 define([ 'jquery', 'knockout', 'text!pages/works/detail/detail.html','dialogmin','ajaxCom'
 ], function($, ko, template,dialogmin,ajaxCom) {
     //接口
-    var pageUrl = '/vote/works/detail'; //列表加载
-    var approvalUrl = '/order/approvalOrderByPks'; //
-
-    
+    var pageUrl = '/vote/works/detail/'; //列表加载
     var viewModel = {
         data :  ko.observable({}),
        
@@ -16,7 +13,7 @@ define([ 'jquery', 'knockout', 'text!pages/works/detail/detail.html','dialogmin'
     
     
     viewModel.load = function() {
-        ajaxCom.Loadajax('get',pageUrl,"",function(res){
+        ajaxCom.Loadajax('get',pageUrl+viewModel.id,"",function(res){
             if(res.status==1){ 
                 viewModel.data(res.data)
             }

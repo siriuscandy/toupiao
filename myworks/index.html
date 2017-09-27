@@ -87,7 +87,7 @@
     UpdateLogo();
      function UpdateLogo(){ //LOGO上传
             var up = WebUploader.create({
-                server: '/vote/uploadpic',
+                server: '/vote/myworks/uploadpic',
                 swf: '../admin/trd/uploader/swf/Uploader.swf?v=' + Math.random(),
                 pick: '.upload-img',
                 accept: [ //可以接受的文件类型，数组
@@ -169,7 +169,7 @@
             dataType : 'json',
             async : false,
             data : qdata,
-            url : "/vote/enter",
+            url : "/vote/myworks/enter",
             contentType:"application/json",
             success : function(res) {
                 if (res.status==1){

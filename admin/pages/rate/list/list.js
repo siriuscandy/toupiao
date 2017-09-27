@@ -3,7 +3,7 @@ define([ 'jquery', 'knockout', 'text!pages/rate/list/list.html','dialogmin',
     'bootstrap','uui','ajaxCom'
 ], function($, ko, template,dialogmin,b,uui,ajaxCom) {
     //接口
-    var pageUrl = '/vote/works/list'; //列表加载
+    var pageUrl = '/vote/rate/list'; //列表加载
     var changUrl = '/vote/works/changestatus'; //上下架 删除
 
     var viewModel = {
@@ -17,7 +17,7 @@ define([ 'jquery', 'knockout', 'text!pages/rate/list/list.html','dialogmin',
         setData : function(res) {
             this.data.content(res.list);
             this.data.totalPages(res.totalPages);
-            this.data.number(res.number + 1);
+            this.data.number(res.number);
             this.data.totalElements(res.totalElements);
         },
         datamodify:ko.observable({}),
