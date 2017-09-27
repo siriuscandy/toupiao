@@ -30,7 +30,7 @@ define([ 'jquery', 'knockout', 'text!pages/works/detail/detail.html','dialogmin'
                 score:Wscore,
                 detail:pingyu
             }
-        ajaxCom.Loadajax('post',submitUrl,qdata,function(res){
+        ajaxCom.Loadajax('post',submitUrl+"/"+viewModel.id,qdata,function(res){
             if(res.status==1){ 
                 dialogmin("评价成功");
                 window.history.go(-1)
@@ -44,7 +44,7 @@ define([ 'jquery', 'knockout', 'text!pages/works/detail/detail.html','dialogmin'
         })
     }
     viewModel.load = function() {
-        ajaxCom.Loadajax('get',pageUrl,"",function(res){
+        ajaxCom.Loadajax('get',pageUrl+"/"+viewModel.id,"",function(res){
             if(res.status==1){ 
                 viewModel.data(res.data)
             }

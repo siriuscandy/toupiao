@@ -38,7 +38,7 @@ define([ 'jquery', 'knockout', 'text!pages/modify/detail/detail.html','dialogmin
                 type : 'post',
                 dataType : 'json',
                 async : false,
-                data : JSON.stringify(queryData),
+                data : queryData,
                 url : $ctx + modifyUrl +"/"+viewModel.userId,
                 contentType:"application/json",
                 success : function(data) {
