@@ -1,6 +1,6 @@
-define([ 'jquery', 'knockout', 'text!pages/modify/detail/detail.html','dialogmin',
+define([ 'jquery', 'knockout', 'text!pages/modify/detail/detail.html','dialogmin','ajaxCom',
       ],
-    function($, ko, template,dialogmin) {
+    function($, ko, template,dialogmin,ajaxCom) {
         var modifyUrl = "/vote/user/change";
         var getUrl = "/vote/getUserInfo";
         var TelReg =  /^(13[0-9]|15[012356789]|17[0678]|18[0-9]|14[57])[0-9]{8}$/;//手机号正则
@@ -33,26 +33,12 @@ define([ 'jquery', 'knockout', 'text!pages/modify/detail/detail.html','dialogmin
             //     dialogmin('您的名称还没填呢~');
             //     return false
             // }
-
-            $.ajax({
-                type : 'post',
-                dataType : 'json',
-                async : false,
-                data : queryData,
-                url : $ctx + modifyUrl +"/"+viewModel.userId,
-                contentType:"application/json",
-                success : function(data) {
-                    if (data.status==1){
-                        dialogmin('修改成功!');
-                       // window.history.go(-1);
-                    }else{
-                        dialogmin(data.msg);
-                    }
-                },
-                error : function(XMLHttpRequest, textStatus, errorThrown) {
-                    dialogmin("网络错误!!");
-                }
-            });
+        ajaxCom.Loadajax('post', modifyUrl +"/"+ viewModel.userId,queryData,function(res){
+            if(res.status==1){ 
+                dialogmin('修改成功!');
+            }
+        })
+            
 
         };
         viewModel.load = function(){

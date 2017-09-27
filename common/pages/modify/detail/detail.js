@@ -1,4 +1,4 @@
-define([ 'jquery', 'knockout', 'text!pages/modify/detail/detail.html','dialogmin',
+define([ 'jquery', 'knockout', 'text!pages/modify/detail/detail.html','dialogmin','ajaxCom',
       ],
     function($, ko, template,dialogmin) {
         var modifyUrl = "/vote/user/change";
@@ -30,25 +30,11 @@ define([ 'jquery', 'knockout', 'text!pages/modify/detail/detail.html','dialogmin
             //     return false
             // }
 
-            $.ajax({
-                type : 'post',
-                dataType : 'json',
-                async : false,
-                data : JSON.stringify(queryData),
-                url : $ctx + modifyUrl+"/"+viewModel.userId,
-                contentType:"application/json",
-                success : function(data) {
-                    if (data.status==1){
-                        dialogmin('修改成功!');
-                       // window.history.go(-1);
-                    }else{
-                        dialogmin(data.msg);
-                    }
-                },
-                error : function(XMLHttpRequest, textStatus, errorThrown) {
-                    dialogmin("网络错误!!");
-                }
-            });
+           ajaxCom.Loadajax('post', modifyUrl +"/"+ viewModel.userId,queryData,function(res){
+            if(res.status==1){ 
+                dialogmin('修改成功!');
+            }
+        })
 
         };
         viewModel.load = function(){

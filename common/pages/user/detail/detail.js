@@ -1,6 +1,6 @@
-define([ 'jquery', 'knockout', 'text!pages/user/detail/detail.html','dialogmin',
+define([ 'jquery', 'knockout', 'text!pages/user/detail/detail.html','dialogmin','ajaxCom',
       ],
-    function($, ko, template,dialogmin) {
+    function($, ko, template,dialogmin,ajaxCom) {
         var modifyUrl = "/vote/user/edit";
         var getUrl = "/vote/user/detail";
         var viewModel = {
@@ -30,25 +30,11 @@ define([ 'jquery', 'knockout', 'text!pages/user/detail/detail.html','dialogmin',
             //     return false
             // }
 
-            $.ajax({
-                type : 'post',
-                dataType : 'json',
-                async : false,
-                data : JSON.stringify(queryData),
-                url : $ctx + modifyUrl +"/"+ viewModel.id,
-                contentType:"application/json",
-                success : function(data) {
-                    if (data.status==1){
-                        dialogmin('修改成功!');
-                        window.history.go(-1);
-                    }else{
-                        dialogmin(data.msg);
-                    }
-                },
-                error : function(XMLHttpRequest, textStatus, errorThrown) {
-                    dialogmin("调用服务报错!!");
-                }
-            });
+           ajaxCom.Loadajax('post', modifyUrl +"/"+ viewModel.userId,queryData,function(res){
+            if(res.status==1){ 
+                dialogmin('修改成功!');
+            }
+            })
 
         };
         viewModel.load = function(){

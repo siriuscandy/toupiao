@@ -39,7 +39,7 @@ define([ 'jquery', 'knockout', 'text!pages/works/list/list.html','dialogmin',
         ajaxCom.Loadajax('get',changUrl+wid,queryData,function(res){
             if(res.status==1){ 
                 dialogmin("上架成功");
-                viewModel.load(viewModel.data.number(),"")
+                viewModel.load(viewModel.data.number()-1,"")
             }
         })
             
@@ -51,7 +51,7 @@ define([ 'jquery', 'knockout', 'text!pages/works/list/list.html','dialogmin',
         ajaxCom.Loadajax('get',changUrl+wid,queryData,function(res){
             if(res.status==1){ 
                 dialogmin("下架成功");
-                viewModel.load(viewModel.data.number(),"")
+                viewModel.load(viewModel.data.number()-1,"")
             }
         })
     };
@@ -62,7 +62,7 @@ define([ 'jquery', 'knockout', 'text!pages/works/list/list.html','dialogmin',
         ajaxCom.Loadajax('get',changUrl+wid,queryData,function(res){
             if(res.status==1){ 
                 dialogmin("删除成功");
-                viewModel.load(viewModel.data.number(),"")
+                viewModel.load(viewModel.data.number()-1,"")
             }
         })
     };
