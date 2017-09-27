@@ -17,13 +17,13 @@
 		<div class="aui-week t-line">
             <h2><div class="iconC"></div><div class="zTitle">我的作品</div><div class="fTitle">/ PUBLISH WORKS </div></h2>
             <div class="fbzpLine">
-            	<div class="mui-table-view mui-grid-view">
-                        <div class="mui-table-view-cell mui-media mui-col-xs-6">
-                            <a href="zpxq.html">
-                                <img class="mui-media-object" src="img/pic1.jpg">
-                                <div class="mui-media-body">上门保洁-房间彻底清理</div>
+            	<div class="mui-table-view mui-grid-view" data-bind="foreach: data.content">
+                        <div class="mui-table-view-cell mui-media mui-col-xs-6" data-bind="click:function(){$parent.goDetail(id)}">
+                            <a href="javascript:;">
+                                <img class="mui-media-object" data-bind="attr:{'src':img}">
+                                <div class="mui-media-body" data-bind="text:name"></div>
                                 <div class="mui-media-body jgPice">
-                                    <div class="jgL"><div class="jqfh">2017-8-9</div></div>
+                                    <div class="jgL"><div class="jqfh" data-bind="text:pubdata">2017-8-9</div></div>
                                 </div>
                             </a>
                         </div>
@@ -60,7 +60,7 @@
         },
         searchText : ko.observable(),
         setData : function(res) {
-            this.data.content(res);
+            this.data.content(res.list);
             this.data.totalPages(res.pages);
             this.data.number(res.pageNum);
             this.data.totalElements(res.total);
@@ -69,60 +69,28 @@
         
     };
    
-    var listUrl  =  '/api/showDetailListByZnameAndUid';
-    var Stopload =false;
-    var DataArray= new Array();
-   var GetUrl = '/userModule/getUserModuleDetail'; //获取信息
+    var listUrl  =  '/vote/myworks/list/';
     viewModel.load = function(){
-        droploadFun();
-        
-        
+        viewModel.getiList();
     };
+    viewModel.goDetail = function(id){
+        window.location.href="zpxq.html?id="+id;
+    }
     viewModel.getiList = function(pageIndex){
-    	
         var queryData = {
             pageSize: viewModel.pagesize||10,     //page size 每页显示条数
             pageNum: pageIndex,    //page num 当前页数
-            zname: "要闻",   //page num 当前页数
-            userid:viewModel.userId
         };
-        
-        ajaxCom.Loadajax('GET',listUrl,queryData,function(res){
-                
-                   
-                    DataArray =  DataArray.concat(res.list)
-                    viewModel.setData(DataArray);
-                    
-                
+        ajaxCom.Loadajax('GET',listUrl+viewModel.userId,"",function(res){
+                   // DataArray =  DataArray.concat(res.list)
+                    viewModel.setData(res.data);
             },function(error){
-             Stopload =true
                 dialogmin("网络错误");
         })
     }
     
-    //viewModel.data(res);
-    //viewModel.load(1);
     viewModel.load(); 
-    var droploadFun = function(){
-        // 页数
-        var page = 0;
-
-        // dropload
-        $('.content').dropload({
-            scrollArea : window,
-            loadDownFn : function(me){
-                page++;
-                // 拼接HTML
-                var result = '';
-                 if(Stopload){ return false}
-                viewModel.getiList(page);
-                setTimeout(function(){
-                me.resetload();
-                    
-                },1000) 
-            }
-        });
-    };
+    
     ko.applyBindings(viewModel);
 </script>
 </body>
