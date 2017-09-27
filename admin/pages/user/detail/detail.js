@@ -29,7 +29,7 @@ define([ 'jquery', 'knockout', 'text!pages/user/detail/detail.html','dialogmin',
             //     dialogmin('您的名称还没填呢~');
             //     return false
             // }
-        ajaxCom.Loadajax('post', modifyUrl +"/"+ viewModel.id,queryData,function(res){
+        ajaxCom.Loadajax('get', modifyUrl +"/"+ viewModel.id,queryData,function(res){
             if(res.status==1){ 
                 dialogmin('修改成功!');
                 window.history.go(-1);

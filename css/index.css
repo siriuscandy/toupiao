@@ -3672,6 +3672,7 @@ img[src=""] {
 .gobackbtn {
 	position: absolute;
 	top: -5px;
+	left:20px;
 	float: left;
 	padding: 5px 20px;
 	cursor: pointer;
