@@ -3,7 +3,7 @@ define([ 'jquery', 'knockout', 'text!pages/works/detail/detail.html','dialogmin'
 ], function($, ko, template,dialogmin,ajaxCom) {
     //接口
     var pageUrl = '/vote/works/detail'; //列表加载
-    var submitUrl = '/vote/marking/edit'; //
+    var submitUrl = '/vote/marking/add'; //
 
     
     var viewModel = {
@@ -30,7 +30,7 @@ define([ 'jquery', 'knockout', 'text!pages/works/detail/detail.html','dialogmin'
                 score:Wscore,
                 detail:pingyu
             }
-        ajaxCom.Loadajax('post',submitUrl+"/"+viewModel.id,qdata,function(res){
+        ajaxCom.Loadajax('get',submitUrl+"/"+viewModel.id,qdata,function(res){
             if(res.status==1){ 
                 dialogmin("评价成功");
                 window.history.go(-1)

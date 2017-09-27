@@ -13,7 +13,7 @@ img{width:100%;}
 .mui-bar-tab .aui-tab-item .mui-icon{top: 6px;width: 24px;height: 26px;padding-top: 0;padding-bottom: 0;}
 .mui-bar-tab .aui-tab-item .mui-icon~.mui-tab-label {font-size: 14px;display: block;overflow: hidden;text-overflow: ellipsis;}
 
-.content{background:#f3f3f3; height:100%;}
+.content{background:#f4f5f9; height:100%;}
 .iconC{width:2px; height:20px; float:left; background:#cda053; margin-left:15px;}
 .aui-week h2{font-size:16px;font-weight:normal;padding-bottom:15px; background:#f4f5f9; padding-top:15px; margin-bottom:0px; margin-top:0;text-indent:20px;overflow:hidden;}
 .aui-week{padding-top:15px; padding-top:0; background:#f4f5f9;}

@@ -78,12 +78,12 @@
             type : 'get',
             dataType : 'json',
             async : false,
-            data : qdata,
+            data : queryData,
             url : listUrl + Myid,
             contentType:"application/json",
             success : function(res) {
                 if (res.status==1){
-                    viewModel.setData(res.data);
+                    viewModel.data(res.data);
                 }else{
                     dialogmin(res.msg);
                 }
