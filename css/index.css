@@ -3986,3 +3986,5 @@ padding:10px 0;margin: 20px 0 0 7%; cursor: pointer}
     margin: 20px 0 0 7%;
 	height: 120px}
 .pingyu_btn { float: left; background: #00a8e6; color: #fff; text-align: center; padding:10px 40px;margin: 20px 15% 0 7%;clear: both;}
+.W_active { background: #0084ff; color: #fff;}
+.works_score span:hover {background: #0084ff; color: #fff;}

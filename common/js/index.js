@@ -203,6 +203,7 @@ require(['jquery', 'knockout','dialogminBack', 'bootstrap', 'director','moment']
             window.router.setRoute('/works/list/list');
              $(".menuleftClass").eq(0).addClass("active");
         }
+            $("#userInfo_Name").html(window.sessionStorage.username);
     }
 
        

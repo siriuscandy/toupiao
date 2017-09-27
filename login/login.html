@@ -59,13 +59,19 @@
                     Licensing information: https://bootstrapmade.com/license/
                     Purchase the pro version form: https://bootstrapmade.com/buy/?theme=NiceAdmin
                 -->
-                <a href="https://bootstrapmade.com/free-business-bootstrap-themes-website-templates/">Copyright © 2017, All Rights Reserved</a> by <a href="https://bootstrapmade.com/">maiduoer</a>
+                <a href="https://bootstrapmade.com/free-business-bootstrap-themes-website-templates/">Copyright © 2017, All Rights Reserved</a> by <a href="https://bootstrapmade.com/">artmedal.org.cn</a>
             </div>
         </div>
     </div>
 
 <script src="../admin/trd/jquery/jquery.2.1.4.min.js"></script>
 <script>
+$(function(){
+     $(document).keyup(function (e) {
+            if (e.keyCode == 13) {
+                $(".btnlogin").click();
+            }
+        });
     $(".btnlogin").click(function(){
         var usernameval =$(".username").val();
         var passwordval =$(".password").val();
@@ -95,6 +101,7 @@
                         window.location.href = "../common/index.html"
                     }
                     window.sessionStorage.userId = res.data.userId;
+                    window.sessionStorage.username = usernameval;
                 }else{
                     $(".tips").html(res.msg);
                 }
@@ -104,7 +111,7 @@
             }
         });
     })
-    
+ })   
 </script>
   </body>
 </html>
