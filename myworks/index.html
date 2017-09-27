@@ -83,6 +83,7 @@
 <script src="../admin/trd/jquery/jquery.2.1.4.min.js"></script>
 <script src="../admin/trd/uploader/js/webuploader.min.js"></script>
 <script>
+    var MyuserId = window.sessionStorage.myuserId;
     UpdateLogo();
      function UpdateLogo(){ //LOGO上传
             var up = WebUploader.create({
@@ -160,7 +161,7 @@
                 detail:$.trim(W_detail),
                 phonenumber:$.trim(W_phonenumber),
                 address:$.trim(W_address),
-                userId:"",
+                userId:MyuserId,
                 images:W_images
             }
         $.ajax({

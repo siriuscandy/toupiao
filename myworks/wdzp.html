@@ -71,6 +71,7 @@
    
     var listUrl  =  '/vote/myworks/list/';
     viewModel.load = function(){
+        viewModel.userId = window.sessionStorage.myuserId;
         viewModel.getiList();
     };
     viewModel.goDetail = function(id){

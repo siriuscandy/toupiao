@@ -12,29 +12,20 @@
 <body>
 	<div class="content zpxqCon">
 		<div class="aui-week t-line">
-            <div class="swiper-container" alt="Image description">
-	<div class="my-gallery swiper-wrapper ">
-	    <div class="swiper-slide">			
-			<a href="#"  data-size="1024x1024"><img src="img/pic1.jpg" /></a>
-	    </div>
-	    <div class="swiper-slide">			
-	  		<a href="#"  data-size="964x1024"><img src="img/pic1.jpg" /></a>
-	    </div>
-	    <div class="swiper-slide">			
-		    <a href="#"  data-size="1024x683"><img src="img/pic1.jpg" /></a>
-	    </div>	
-	    <div class="swiper-slide">			
-			<a href="#" data-size="1024x768"><img src="img/pic1.jpg" /></a>
-	    </div>		    
-	    	  	    
-	</div>
-	<div class="swiper-pagination"></div>
+            <div class="swiper-container" id="swiper-container" alt="Image description">
+            <div class="my-gallery swiper-wrapper " data-bind="foreach: data().images">
+                <div class="swiper-slide"  >
+					<img  data-bind="attr:{'src':$data}"/>
+				</div>
+		    
+                            
+            </div>
+	<div class="swiper-pagination pagination1"></div>
     <div class="gbBnt"><a href="wdzp.html"><img src="img/icon1.png"></a></div>
 </div>   
         </div>
         <div class="cpxqCon">
-        	作品说明：XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-XXXXXXXXXXXXXXXXXXXX
+        	作品说明：<em data-bind="data().detail"></em>
         </div>
         <div style="height:50px"></div>
         <nav class="mui-bar mui-bar-tab">
@@ -53,13 +44,46 @@ XXXXXXXXXXXXXXXXXXXX
     </div>
 <script src="js/mui.min.js"></script>
 <script src="js/swiper.min.js"></script>
-<script>  
-    var swiper = new Swiper('.swiper-container', {
-        pagination: '.swiper-pagination',
-        paginationType: 'fraction'
-    });   
-   
-   
+<script src="../admin/trd/jquery/jquery.2.1.4.min.js"></script>
+<script src="../admin/trd/knockout/knockout-3.2.0.min.js"></script>
+<script>
+    var viewModel = {
+        data : ko.observable(),
+    };
+    var Myid = GetQueryString("id");
+    var listUrl  =  '/vote/myworks/detail/';
+    viewModel.load = function(){
+        viewModel.userId = window.sessionStorage.myuserId;
+        viewModel.getiList();
+        var swiper = new Swiper('#swiper-container', {
+        autoplay:3000,
+        pagination: '.pagination1',
+        paginationClickable: true,
+        mode: 'vertical'
+      });
+    };
+    viewModel.getiList = function(pageIndex){
+        var queryData = {
+            id:Myid
+        };
+        ajaxCom.Loadajax('GET',listUrl+Myid,"",function(res){
+                   // DataArray =  DataArray.concat(res.list)
+                    viewModel.data(res.data);
+            },function(error){
+                dialogmin("网络错误");
+        })
+    }
+    
+    viewModel.load(); 
+    
+    ko.applyBindings(viewModel);
+    function GetQueryString(name)
+  {
+    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);
+    if(r!=null)return  unescape(r[2]); return null;
+  };
 </script>
+
 </body>
 </html>
