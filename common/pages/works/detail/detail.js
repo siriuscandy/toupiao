@@ -21,16 +21,16 @@ define([ 'jquery', 'knockout', 'text!pages/works/detail/detail.html','dialogmin'
             dialogmin("请选择分数");
             return false
         }
-        if(pingyu == "" || pingyu== "填写评语"){
-            dialogmin("请填写评语");
-            return false
+        if(pingyu== "填写评语"){
+            pingyu="";
         }
         var qdata= {
-                id:viewModel.id ,
+                workId:viewModel.id ,
                 score:Wscore,
+                userId:viewModel.userId,
                 detail:pingyu
             }
-        ajaxCom.Loadajax('get',submitUrl+"/"+viewModel.id,qdata,function(res){
+        ajaxCom.Loadajax('get',submitUrl,qdata,function(res){
             if(res.status==1){ 
                 dialogmin("评价成功");
                 window.history.go(-1)
@@ -54,6 +54,7 @@ define([ 'jquery', 'knockout', 'text!pages/works/detail/detail.html','dialogmin'
     }
     var init = function(parm){
         viewModel.id = parm[0];
+        viewModel.userId = window.sessionStorage.userId;
         viewModel.load();
     };
 
