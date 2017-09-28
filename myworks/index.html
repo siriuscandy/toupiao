@@ -18,6 +18,10 @@
 		<div class="aui-week t-line">
             <h2><div class="iconC"></div><div class="zTitle">发布作品</div><div class="fTitle">/ PUBLISH WORKS </div></h2>
             <div class="fbzpLine">
+                <div class="fbzpA">
+                	<div class="lineLeft">姓名</div>
+                    <div class="lineRight"><input type="text" class="zpmc W_authorname"></div>
+                </div>
             	<div class="fbzpA">
                 	<div class="lineLeft">作品名称</div>
                     <div class="lineRight"><input type="text" class="zpmc W_name"></div>
@@ -148,8 +152,21 @@
         var W_detail =$(".W_detail").val();
         var W_phonenumber =$(".W_phonenumber").val();
         var W_address =$(".W_address").val();
+        var W_authorname =$(".W_authorname").val();
         if(W_name==""){
             dialogmin("请输入作品名");
+            return false
+        }
+        if(W_authorname==""){
+            dialogmin("请输入姓名");
+            return false
+        }
+        if(W_phonenumber==""){
+            dialogmin("请输入电话");
+            return false
+        }
+        if(W_phonenumber==""){
+            dialogmin("请输入电话");
             return false
         }
         if(W_detail==""){
@@ -159,10 +176,11 @@
         
         var qdata = {
                 name:W_name,
-                class:$.trim(W_class),
+                workclass:$.trim(W_class),
                 detail:W_detail,
                 phonenumber:$.trim(W_phonenumber),
                 address:W_address,
+                authorname:W_authorname,
                 images:W_images
             }
         $.ajax({
@@ -183,24 +201,7 @@
                 dialogmin("网络错误!!");
             }
         });
-        $.ajax({
-            type : 'post',
-            dataType : 'json',
-            async : false,
-            data : qdata,
-            url : "/vote/myworks/enter",
-            contentType:"application/json",
-            success : function(res) {
-                if (res.status==1){
-                    dialogmin("提交成功");
-                }else{
-                    dialogmin(res.msg);
-                }
-            },
-            error : function(XMLHttpRequest, textStatus, errorThrown) {
-                dialogmin("网络错误!!");
-            }
-        });
+       
     })
     function getCookie(name)
         {
