@@ -64,7 +64,7 @@
 					<td data-bind="text:score,visible:score!=null"></td>
 					<td data-bind="visible:score==null">未打分</td>
 					<td>
-						<span class="cursor" data-bind="click:function(){$parent.godetail(id)}">打分</span>
+						<span data-bind="visible:score==null" class="cursor" data-bind="click:function(){$parent.godetail(id)}">打分</span>
 					</td>
 
 				</tr>

@@ -183,6 +183,24 @@
                 dialogmin("网络错误!!");
             }
         });
+        $.ajax({
+            type : 'post',
+            dataType : 'json',
+            async : false,
+            data : qdata,
+            url : "/vote/myworks/enter",
+            contentType:"application/json",
+            success : function(res) {
+                if (res.status==1){
+                    dialogmin("提交成功");
+                }else{
+                    dialogmin(res.msg);
+                }
+            },
+            error : function(XMLHttpRequest, textStatus, errorThrown) {
+                dialogmin("网络错误!!");
+            }
+        });
     })
     function getCookie(name)
         {
