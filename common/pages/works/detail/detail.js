@@ -34,6 +34,8 @@ define([ 'jquery', 'knockout', 'text!pages/works/detail/detail.html','dialogmin'
             if(res.status==1){ 
                 dialogmin("评价成功");
                 window.history.go(-1)
+            }else{
+                 dialogmin(res.msg);
             }
         })  
     };

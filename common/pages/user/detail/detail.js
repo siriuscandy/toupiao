@@ -33,6 +33,9 @@ define([ 'jquery', 'knockout', 'text!pages/user/detail/detail.html','dialogmin',
            ajaxCom.Loadajax('get', modifyUrl +"/"+ viewModel.id,queryData,function(res){
             if(res.status==1){ 
                 dialogmin('修改成功!');
+                window.sessionStorage.username = viewModel.data().name;
+            }else{
+                dialogmin(res.msg)
             }
             })
 
@@ -49,7 +52,7 @@ define([ 'jquery', 'knockout', 'text!pages/user/detail/detail.html','dialogmin',
                         viewModel.data(res.data);
                        
                     }else{
-                        dialogmin("网络错误!!");
+                        dialogmin(res.msg);
                     }
                 }
             });

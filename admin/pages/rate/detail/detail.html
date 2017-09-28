@@ -18,7 +18,7 @@
                 </tr>
             </table>
             <div class="ratebtn">
-                <span>评分：<i data-bind="text:data().score"></i></span>
+                <span>评分：<i data-bind="text:data().score,visible:data().score!=null"></i><i data-bind="visible:data().score==null">未打分</i></span>
                 <span class="ra_btn" data-bind="click:function(){godetail(data().id,data().name)}">查看评委详情</span>
             </div>
             <div class="order-detail-mes-bottom">
