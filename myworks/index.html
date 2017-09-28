@@ -158,18 +158,18 @@
         }
         
         var qdata = {
-                name:encodeURIComponent(W_name),
+                name:W_name,
                 class:$.trim(W_class),
-                detail:encodeURIComponent(W_detail),
+                detail:W_detail,
                 phonenumber:$.trim(W_phonenumber),
-                address:encodeURIComponent(W_address),
+                address:W_address,
                 images:W_images
             }
         $.ajax({
-            type : 'get',
+            type : 'post',
             dataType : 'json',
             async : false,
-            data : qdata,
+            data : JSON.stringify(qdata),
             url : "/vote/myworks/enter",
             contentType:"application/json",
             success : function(res) {
