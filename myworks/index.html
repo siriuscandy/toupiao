@@ -51,7 +51,7 @@
                 </div>
                 <div class="fbzpA">
                 	<div class="lineLeft">手机号码</div>
-                    <div class="lineRight"><input type="text" class="zpmc W_phonenumber"></div>
+                    <div class="lineRight"><input type="text" class="zpmc W_phonenumber" maxlength="11"></div>
                 </div>
                 <div class="fbzpA">
                 	<div class="lineLeft">地      址</div>
@@ -156,16 +156,17 @@
             dialogmin("请输入作品描述");
             return false
         }
+        
         var qdata = {
-                name:$.trim(W_name),
+                name:encodeURIComponent(W_name),
                 class:$.trim(W_class),
-                detail:$.trim(W_detail),
+                detail:encodeURIComponent(W_detail),
                 phonenumber:$.trim(W_phonenumber),
-                address:$.trim(W_address),
+                address:encodeURIComponent(W_address),
                 images:W_images
             }
         $.ajax({
-            type : 'post',
+            type : 'get',
             dataType : 'json',
             async : false,
             data : qdata,

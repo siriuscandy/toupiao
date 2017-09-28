@@ -22,8 +22,8 @@ img{width:100%;}
 .lineRight{ display:inline-block;width:75%; }
 .lineRight .zpmc{margin-bottom:0;padding:7px 8px; }
 .lineRight .flnr{border: 1px solid #ccc !important;margin-bottom:0;padding:7px 8px;}
-.picyl{width:70px; height:70px; display:inline-block; border:1px solid #c6dce6; border-radius:5px; margin-right:10px;}
-.picyl img{width:70px; height:70px;border-radius:5px;}
+.picyl{display:inline-block;  border-radius:5px; margin-right:10px;}
+.picyl img{width:70px; height:70px;border-radius:5px;border:1px solid #c6dce6;}
 .upload-img{ width:70px; height:70px; display:inline-block;}
 .sctp{position: absolute;top: 149px;width:70px; height:70px;filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0);filter:alpha(opacity=0);-moz-opacity:0;-khtml-opacity: 0;opacity:0;background: none;border: none;cursor: pointer;}
 .chk_3 {display: none;}
