@@ -14,7 +14,7 @@ define([ 'jquery', 'knockout', 'text!pages/user/detail/detail.html','dialogmin',
         viewModel.submitMo = function() {
           
             var queryData = {
-                name: viewModel.data().name,
+                name: encodeURIComponent(viewModel.data().name),
                 phonenumber: viewModel.data().phonenumber,
                 account: viewModel.data().account,
                 id: viewModel.id,
