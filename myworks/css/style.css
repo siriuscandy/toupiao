@@ -177,7 +177,7 @@ align-items: center;}
 .gbBnt{width:20px; height:20px; float:right; position:absolute; z-index:10; right:15px; top:16px;}
 .gbBnt img{width:20px; height:20px;}
 .zpxqCon{background:#000;}
-.cpxqCon{padding:10px 5%; font-size:14px; color:#fff; line-height:20px;}
+.cpxqCon{padding:10px 5%; font-size:14px; color:#fff; line-height:20px; margin-top: 10px;}
 
 
 .dialogmin{z-index:9999;position:fixed;width:50%;top:30%;background:rgba(0,0,0,.5);color:#fff;padding:10px 5px;left:25%;text-align:center;border-radius:10px}
