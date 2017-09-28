@@ -16,7 +16,8 @@ define([ 'jquery', 'knockout', 'text!pages/works/detail/detail.html','dialogmin'
         ajaxCom.Loadajax('get',pageUrl+viewModel.id,"",function(res){
             if(res.status==1){ 
                 viewModel.data(res.data)
-            }
+            }else{}
+                dialogmin('网络开小差~请刷新页面')
         })  
     }
     var init = function(parm){

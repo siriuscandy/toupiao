@@ -20,7 +20,7 @@
 		    
                             
             </div>
-	<div class="swiper-pagination pagination1"></div>
+	<!-- <div class="swiper-pagination pagination1"></div> -->
     <div class="gbBnt"><a href="wdzp.html"><img src="img/icon1.png"></a></div>
 </div>   
         </div>
@@ -44,7 +44,6 @@
         </nav>
     </div>
     <style>
-        .swiper-wrapper{ height: 220px; overflow: hidden}
     </style>
 <script src="js/mui.min.js"></script>
 <script src="js/swiper.min.js"></script>
@@ -64,8 +63,6 @@
         var swiper = new Swiper('#swiper-container', {
         autoplay:3000,
         loop : true,
-        pagination: '.pagination1',
-        paginationClickable: true,
         mode: 'vertical'
       });
     };
@@ -92,7 +89,7 @@
                 if (res.status==1){
                     viewModel.data.attrs(res.data);
                 }else{
-                    dialogmin(res.msg);
+                    dialogmin('网络开小差~请刷新页面');
                 }
             },
             error : function(XMLHttpRequest, textStatus, errorThrown) {

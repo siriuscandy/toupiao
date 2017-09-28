@@ -116,7 +116,7 @@ define([ 'jquery', 'knockout', 'text!pages/works/list/list.html','dialogmin',
 
                 });
             }else{
-                dialogmin(res.msg || "网络错误!!");
+                dialogmin('网络开小差~请刷新页面');
             }
         },function(error){
             

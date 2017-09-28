@@ -33,6 +33,8 @@ define([ 'jquery', 'knockout', 'text!pages/user/detail/detail.html','dialogmin',
             if(res.status==1){ 
                 dialogmin('修改成功!');
                 window.history.go(-1);
+            }else{
+                dialogmin(res.msg)
             }
         })
            
@@ -50,7 +52,7 @@ define([ 'jquery', 'knockout', 'text!pages/user/detail/detail.html','dialogmin',
                         viewModel.data(res.data);
                        
                     }else{
-                        dialogmin("网络错误!!");
+                        dialogmin('网络开小差~请刷新页面');
                     }
                 }
             });

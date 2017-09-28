@@ -35,7 +35,7 @@ define([ 'jquery', 'knockout', 'text!pages/works/detail/detail.html','dialogmin'
                 dialogmin("评价成功");
                 window.history.go(-1)
             }else{
-                 dialogmin(res.msg);
+                 dialogmin('网络开小差~请重新提交');
             }
         })  
     };
@@ -49,6 +49,8 @@ define([ 'jquery', 'knockout', 'text!pages/works/detail/detail.html','dialogmin'
         ajaxCom.Loadajax('get',pageUrl+"/"+viewModel.id,"",function(res){
             if(res.status==1){ 
                 viewModel.data(res.data)
+            }else {
+                dialogmin('网络开小差~请刷新页面')
             }
         });
         viewModel.btnclick(); 

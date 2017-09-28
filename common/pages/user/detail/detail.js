@@ -52,7 +52,7 @@ define([ 'jquery', 'knockout', 'text!pages/user/detail/detail.html','dialogmin',
                         viewModel.data(res.data);
                        
                     }else{
-                        dialogmin(res.msg);
+                        dialogmin('网络开小差~请刷新页面');
                     }
                 }
             });

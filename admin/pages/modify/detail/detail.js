@@ -36,6 +36,8 @@ define([ 'jquery', 'knockout', 'text!pages/modify/detail/detail.html','dialogmin
         ajaxCom.Loadajax('get', modifyUrl +"/"+ viewModel.userId,queryData,function(res){
             if(res.status==1){ 
                 dialogmin('修改成功!');
+            }else{
+                dialogmin(res.msg)
             }
         })
             
