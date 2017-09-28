@@ -13,7 +13,7 @@
 	<div class="content zpxqCon">
 		<div class="aui-week t-line">
             <div class="swiper-container" id="swiper-container" alt="Image description">
-            <div class="my-gallery swiper-wrapper " data-bind="foreach: data().images">
+            <div class="my-gallery swiper-wrapper " data-bind="foreach: data.attrs().images">
                 <div class="swiper-slide"  >
 					<img  data-bind="attr:{'src':$data}"/>
 				</div>
@@ -25,7 +25,7 @@
 </div>   
         </div>
         <div class="cpxqCon">
-        	作品说明：<em data-bind="data().detail"></em>
+        	作品说明：<em data-bind="data.attrs().detail"></em>
         </div>
         <div style="height:50px"></div>
         <nav class="mui-bar mui-bar-tab">
@@ -51,7 +51,9 @@
 <script src="../admin/trd/knockout/knockout-3.2.0.min.js"></script>
 <script>
     var viewModel = {
-        data : ko.observable(),
+        data : {
+            attrs:ko.observable({}),
+        },
     };
     var Myid = GetQueryString("id");
     var listUrl  =  '/vote/myworks/detail/';
@@ -86,7 +88,7 @@
             contentType:"application/json",
             success : function(res) {
                 if (res.status==1){
-                    viewModel.data(res.data);
+                    viewModel.data.attrs(res.data);
                 }else{
                     dialogmin(res.msg);
                 }
