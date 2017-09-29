@@ -16,6 +16,13 @@ define([ 'jquery', 'knockout', 'text!pages/works/detail/detail.html','dialogmin'
         ajaxCom.Loadajax('get',pageUrl+viewModel.id,"",function(res){
             if(res.status==1){ 
                 viewModel.data(res.data)
+                 setTimeout(function(){
+                    $(".woksimg_min").click(function(){
+                    var url = $(this).attr("src");
+                    $(".bigpicDiv .b_pic").find("img").attr("src",url);
+                    $(".bigpicDiv").show();
+                })
+                },500)
             }else{}
                 dialogmin('网络开小差~请刷新页面')
         })  
@@ -23,6 +30,9 @@ define([ 'jquery', 'knockout', 'text!pages/works/detail/detail.html','dialogmin'
     var init = function(parm){
         viewModel.id = parm[0];
         viewModel.load();
+         $(".bigpicDiv").click(function(){
+            $(".bigpicDiv").hide();
+        })
     };
 
     return {

@@ -45,15 +45,17 @@ define([ 'jquery', 'knockout', 'text!pages/works/detail/detail.html','dialogmin'
             $(this).addClass("W_active");
         })
     }
-    viewModel.showbigpic = function(url){
-        $(".bigpicDiv .b_pic").find("img").attr("src",url);
-        $(".bigpicDiv").show();
-        
-    }
     viewModel.load = function() {
         ajaxCom.Loadajax('get',pageUrl+"/"+viewModel.id,"",function(res){
             if(res.status==1){ 
-                viewModel.data(res.data)
+                viewModel.data(res.data);
+                setTimeout(function(){
+                    $(".woksimg_min").click(function(){
+                    var url = $(this).attr("src");
+                    $(".bigpicDiv .b_pic").find("img").attr("src",url);
+                    $(".bigpicDiv").show();
+                })
+                },500)
             }else {
                 dialogmin('网络开小差~请刷新页面')
             }

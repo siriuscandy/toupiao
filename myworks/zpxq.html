@@ -38,9 +38,11 @@
             </div>
         </nav>
     </div>
+    <div class="showbigpic"></div>
     <style>
        
         .swiper-slide{ height: 220px; }
+        .showbigpic{display: none; position: fixed; width: 100%; height: 100%; top: 0;left: 0; z-index: 99999; }
     </style>
 <script src="js/mui.min.js"></script>
 <script src="js/swiper.min.js"></script>
@@ -61,6 +63,10 @@
         autoplay:3000,
         mode: 'vertical'
       });
+      $(".showbigpic").click(function(){
+            $(this).hide();
+            $(".showbigpic").css("background","")
+      })
     };
      var dialogmin = function(content,time){
             if(time==undefined){time = 2000;    }
@@ -69,7 +75,16 @@
 			setTimeout(function(){
 				$(".dialogmin").remove();
 			},time)
-	};
+    };
+    viewModel.showbigpic = function(){
+        $(".swiper-slide").click(function(){
+            var url = $(this).attr("data-img");
+            $(".showbigpic").css({
+                "background":"url("+url+") center no-repeat",
+                "background-size":"contain",
+            })
+        })
+    }
     viewModel.getiList = function(pageIndex){
         var queryData = {
             id:Myid
@@ -86,9 +101,10 @@
                     viewModel.data.attrs(res.data);
                     var images = res.data.images
                     for(var i=0;i<images.length;i++){
-                        var d = " <div class='swiper-slide' style='background:url("+images[i]+") center no-repeat;background-size:contain'></div>"
+                        var d = " <div class='swiper-slide' data-img='"+images[i]+"' style='background:url("+images[i]+") center no-repeat;background-size:contain'></div>"
                         $(".swiper-wrapper").append(d)
                     }
+                    viewModel.showbigpic();
                 }else{
                     dialogmin('网络开小差~请刷新页面');
                 }
