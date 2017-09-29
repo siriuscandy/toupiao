@@ -45,6 +45,11 @@ define([ 'jquery', 'knockout', 'text!pages/works/detail/detail.html','dialogmin'
             $(this).addClass("W_active");
         })
     }
+    viewModel.showbigpic = function(url){
+        $(".bigpicDiv .b_pic").find("img").attr("src",url);
+        $(".bigpicDiv").show();
+        
+    }
     viewModel.load = function() {
         ajaxCom.Loadajax('get',pageUrl+"/"+viewModel.id,"",function(res){
             if(res.status==1){ 
@@ -60,6 +65,9 @@ define([ 'jquery', 'knockout', 'text!pages/works/detail/detail.html','dialogmin'
         viewModel.id = parm[0];
         viewModel.userId = window.sessionStorage.userId;
         viewModel.load();
+        $(".bigpicDiv").click(function(){
+            $(".bigpicDiv").hide();
+        })
     };
 
     return {

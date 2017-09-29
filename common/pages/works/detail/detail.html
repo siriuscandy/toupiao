@@ -32,7 +32,7 @@
             </div>
         </div>
         <div class="order-detail-items-title" >作品图片</div>
-        <div data-bind="foreach: data().images" class="works_img"><img data-bind="attr:{'src':$data}"/></div>
+        <div data-bind="foreach: data().images" class="works_img"><img  data-bind="attr:{'src':$data},click:function(){showbigpic($data)}"/></div>
         <div class="order-detail-items-title" >打分</div>
         <div class="works_score">
             <span data-id="5">5分</span>
@@ -45,4 +45,9 @@
             <textarea class="text"  value="填写评语"></textarea>
             <div class="pingyu_btn cursor" data-bind="click:function(){submit()}">提交</div>
         </div>
+</div>
+<div class="bigpicDiv">
+    <div class="b_pic">
+        <img src=""/>
+    </div>
 </div>
