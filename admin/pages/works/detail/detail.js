@@ -18,13 +18,18 @@ define([ 'jquery', 'knockout', 'text!pages/works/detail/detail.html','dialogmin'
                 viewModel.data(res.data)
                  setTimeout(function(){
                     $(".woksimg_min").click(function(){
-                    var url = $(this).attr("src");
-                    $(".bigpicDiv .b_pic").find("img").attr("src",url);
-                    $(".bigpicDiv").show();
-                })
+                        var url = $(this).attr("src");
+                        $(".bigpicDiv .b_pic").css({
+                            "background":"url("+url+") center no-repeat",
+                            "background-size":"contain",
+                        })
+                        $(".bigpicDiv").show();
+                    })
                 },500)
-            }else{}
+            }else{
                 dialogmin('网络开小差~请刷新页面')
+                
+            }
         })  
     }
     var init = function(parm){
@@ -32,6 +37,7 @@ define([ 'jquery', 'knockout', 'text!pages/works/detail/detail.html','dialogmin'
         viewModel.load();
          $(".bigpicDiv").click(function(){
             $(".bigpicDiv").hide();
+            $(".bigpicDiv .b_pic").css("background",'');
         })
     };
 

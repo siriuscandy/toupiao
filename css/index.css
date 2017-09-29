@@ -3991,7 +3991,4 @@ padding:10px 0;margin: 20px 0 0 7%; cursor: pointer}
 .W_active { background: #0084ff; color: #fff;}
 .works_score span:hover {background: #0084ff; color: #fff;}
 .bigpicDiv { position: fixed; width: 100%; height: 100%; background:rgba(0,0,0,.7); display: none;z-index: 9999999;left: 0;top:0;}
-.bigpicDiv .b_pic { width: 40%;
-    text-align: center;
-    margin: 20px auto;}
-.bigpicDiv .b_pic img { width: 100%;}
+.bigpicDiv .b_pic { position: absolute; width: 100%; width: 100%;left: 0;top: 0;}
